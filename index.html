@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art & Textiles Portfolio</title>
+    <title>Art & Prints Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,23 +15,23 @@
             <ul>
                 <li><a href="#gallery">Art Gallery</a></li>
                 <li><a href="#process">Behind the Scenes</a></li>
-                <li><a href="#textiles" class="disabled-link">Prints/li>
+                <li><a href="#prints">Prints (Coming Soon)</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero / Intro Section -->
     <section class="hero">
-        <h2>Original Art & Textures</h2>
-        <p>Explore original paintings, process videos, and upcoming hand-woven textile collections.</p>
+        <h2>Original Art & Prints</h2>
+        <p>Explore original paintings, process videos, and upcoming fine art print collections.</p>
     </section>
 
     <main>
-	<!-- Section 1: Art Gallery Container -->
+        <!-- Section 1: Art Gallery with 5 Centered, Expandable Cards -->
         <section id="gallery" class="content-section">
             <h3 class="section-title">Available Artworks</h3>
             
-            <div class="marquee-container">
+            <div class="marquee-container" id="marqueeContainer">
                 <div class="marquee-track" id="artTrack">
                     
                     <!-- Art Item 1 -->
@@ -96,7 +96,8 @@
                             </div>
                         </div>
                     </div>
-					  <!-- Art Item 4 -->
+
+                    <!-- Art Item 4 -->
                     <div class="art-card" onclick="toggleCard(this)">
                         <div class="slider-container">
                             <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
@@ -138,81 +139,37 @@
                         </div>
                     </div>
 
-                    <!-- DUPLICATE COPIES FOR INFINITE SEAMLESS LOOPING -->
-                    <div class="art-card" onclick="toggleCard(this)" aria-hidden="true">
-                        <div class="slider-container">
-                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
-                            <div class="slider-track" data-current-index="0">
-                                <div class="art-image active" style="background-color: #a0c4ff;"></div>
-                                <div class="art-image" style="background-color: #bdb2ff;"></div>
-                            </div>
-                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
-                        </div>
-                        <div class="art-info">
-                            <h4>Ocean Breeze</h4>
-                            <p class="art-meta">16" x 20" | Acrylic</p>
-                            <p class="price">$250.00</p>
-                            <div class="expanded-content">
-                                <p class="art-description">An immersive abstract study of coastal wind currents.</p>
-                                <button class="inquire-btn">Inquire About Piece</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="art-card" onclick="toggleCard(this)" aria-hidden="true">
-                        <div class="slider-container">
-                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
-                            <div class="slider-track" data-current-index="0">
-                                <div class="art-image active" style="background-color: #ffadad;"></div>
-                                <div class="art-image" style="background-color: #ffd166;"></div>
-                            </div>
-                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
-                        </div>
-                        <div class="art-info">
-                            <h4>Morning Mist</h4>
-                            <p class="art-meta">12" x 12" | Oil</p>
-                            <p class="price">$180.00</p>
-                            <div class="expanded-content">
-                                <p class="art-description">A soft, atmospheric landscape capturing dawn rolling over quiet valley hills.</p>
-                                <button class="inquire-btn">Inquire About Piece</button>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
-		<!-- Section 2: Process Videos -->
+
         <section id="process" class="content-section grey-bg">
             <h3 class="section-title">Behind the Scenes</h3>
             <div class="video-container">
-                <iframe src="https://youtube.com" title="Art Process Video" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Art Process Video" allowfullscreen></iframe>
             </div>
         </section>
 
-        <!-- Section 3: Future Textiles Preview -->
-        <section id="textiles" class="content-section">
-            <h3 class="section-title">Prints</h3>
+        <section id="prints" class="content-section">
+            <h3 class="section-title">Prints Collection</h3>
             <div class="preview-box">
                 <h4>Coming Late 2026</h4>
-                <p>I am currently at the loom designing a brand new collection of hand-woven tufted goods, throws, and wearable art.</p>
+                <p>I am currently curating a brand new collection of high-quality Giclée fine art prints, limited editions, and signed poster runs.</p>
             </div>
         </section>
     </main>
 
-    <!-- FULL SCREEN LIGHTBOX MODAL FOR IMAGES -->
     <div id="lightbox" class="modal" onclick="closeLightbox()">
         <span class="close-modal">&times;</span>
         <div class="modal-content" id="lightboxImg"></div>
     </div>
 
-    <!-- INQUIRY EMAIL MODAL POPUP -->
     <div id="inquiryModal" class="modal">
         <div class="modal-card">
             <span class="close-modal" onclick="closeInquiryModal()">&times;</span>
             <h4 id="inquiryTitle">Inquire About Artwork</h4>
             <p class="modal-email-note">For purchasing inquiries or framing options, please send a message directly to: <br><strong>studio@yourdomain.com</strong></p>
-            <form action="https://formspree.io" method="POST" id="contactForm" onclick="event.stopPropagation();">
+            <form action="https://formspree.io/f/your-id" method="POST" id="contactForm" onclick="event.stopPropagation();">
                 <input type="hidden" name="Artwork" id="formArtworkName">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email Address" required>
@@ -228,43 +185,33 @@
 
     <script>
         function toggleCard(cardElement) {
-            var track = document.getElementById('artTrack');
-            var isOpen = cardElement.classList.contains('expanded');
+            const track = document.getElementById('artTrack');
+            const isOpen = cardElement.classList.contains('expanded');
             
-            if (event.target.closest('.nav-arrow')) return;
-            if (event.target.closest('.art-image')) return;
-            if (event.target.closest('.modal')) return;
+            if (event.target.closest('.nav-arrow') || event.target.closest('.art-image') || event.target.closest('.modal')) return;
 
-            var allCards = document.querySelectorAll('.art-card');
-            for (var i = 0; i < allCards.length; i++) {
-                allCards[i].classList.remove('expanded');
-            }
+            document.querySelectorAll('.art-card').forEach(card => card.classList.remove('expanded'));
             track.classList.remove('animation-paused');
 
             if (!isOpen) {
                 cardElement.classList.add('expanded');
-                track.add('animation-paused');
+                track.classList.add('animation-paused');
             }
         }
 
         document.addEventListener('click', function(event) {
-            var track = document.getElementById('artTrack');
+            const track = document.getElementById('artTrack');
             if (!event.target.closest('.art-card') && !event.target.closest('.modal')) {
-                var allCards = document.querySelectorAll('.art-card');
-                for (var i = 0; i < allCards.length; i++) {
-                    allCards[i].classList.remove('expanded');
-                }
-                if (track) {
-                    track.classList.remove('animation-paused');
-                }
+                document.querySelectorAll('.art-card').forEach(card => card.classList.remove('expanded'));
+                if (track) track.classList.remove('animation-paused');
             }
         });
 
         function changeSlide(event, button, direction) {
             event.stopPropagation();
-            var sliderTrack = button.parentElement.querySelector('.slider-track');
-            var slides = sliderTrack.querySelectorAll('.art-image');
-            var currentIndex = parseInt(sliderTrack.getAttribute('data-current-index')) || 0;
+            const sliderTrack = button.parentElement.querySelector('.slider-track');
+            const slides = sliderTrack.querySelectorAll('.art-image');
+            let currentIndex = parseInt(sliderTrack.getAttribute('data-current-index')) || 0;
 
             slides[currentIndex].classList.remove('active');
             currentIndex = (currentIndex + direction + slides.length) % slides.length;
@@ -274,8 +221,8 @@
 
         function zoomImage(divElement, event) {
             event.stopPropagation();
-            var lightbox = document.getElementById('lightbox');
-            var lightboxImg = document.getElementById('lightboxImg');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
             lightbox.style.display = "flex";
             lightboxImg.style.backgroundColor = divElement.style.backgroundColor;
             document.getElementById('artTrack').classList.add('animation-paused');
@@ -287,7 +234,7 @@
 
         function openInquiryModal(artworkName, event) {
             event.stopPropagation();
-            var modal = document.getElementById('inquiryModal');
+            const modal = document.getElementById('inquiryModal');
             document.getElementById('inquiryTitle').innerText = "Inquire: " + artworkName;
             document.getElementById('formArtworkName').value = artworkName;
             modal.style.display = "flex";
@@ -297,6 +244,17 @@
         function closeInquiryModal() {
             document.getElementById('inquiryModal').style.display = "none";
         }
+
+        // Horizontal Scroll Link Engine
+        const container = document.getElementById('marqueeContainer');
+        const track = document.getElementById('artTrack');
+
+        container.addEventListener('wheel', function(e) {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                container.scrollLeft += e.deltaY;
+            }
+        });
     </script>
 </body>
 </html>
