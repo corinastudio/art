@@ -280,4 +280,75 @@ footer { text-align: center; padding: 3rem; color: var(--text-muted); font-size:
     font-family: 'Playfair Display', Georgia, serif !important;
     font-weight: 700;
     color: #c5a059 !important; 
-    text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6), 0px 1px 1px rgba(0, 0, 0, 0.15);
+text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6), 0px 1px 1px rgba(0, 0, 0, 0.15);}
+
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVENESS MODULE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* 1. Adjust global page paddings so content doesn't hug the screen edge */
+    .hero {
+        padding: 3.5rem 1rem;
+    }
+    .hero h2 {
+        font-size: 2rem; /* Scales heading text down slightly for smaller screens */
+    }
+    .content-section {
+        padding: 3rem 0;
+    }
+    .grey-bg {
+        margin: 0 3%;
+        padding: 3rem 3%;
+    }
+
+    /* 2. Re-align the Margin Navigation Frame for small viewports */
+    .gallery-wrapper {
+        padding: 0 45px; /* Narrows side margins slightly to give cards more breathing room */
+    }
+
+    .gallery-nav-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+        top: 125px; /* Re-centers navigation arrows against scaled-down slider heights */
+    }
+
+    /* 3. FLUID CARD SCALING ENGINE (Prevents clipping bugs on mobile screens) */
+    .art-card {
+        width: calc(100vw - 120px); /* Dynamically shrinks the width based on the phone's viewport width */
+        max-width: 380px;
+    }
+
+    .slider-container {
+        height: 250px; /* Lowers image block height proportionally for smaller phones */
+    }
+
+    /* 4. Updates the manual arrow navigation shift step sizes to match the new fluid widths */
+    .marquee-track {
+        gap: 20px; /* Slightly tighter gap on mobile layouts */
+    }
+}
+
+/* Adjustments for ultra-small portrait phone screens */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column; /* Stacks your logo above the navigation links if room runs out */
+        gap: 1rem;
+        padding: 1rem 5%;
+    }
+    nav ul li {
+        margin: 0 0.75rem; /* Evenly spaces menu buttons across screen widths */
+    }
+    .gallery-wrapper {
+        padding: 0 35px;
+    }
+    .art-card {
+        width: calc(100vw - 90px);
+    }
+    .slider-container {
+        height: 220px;
+    }
+}
+	
+	
