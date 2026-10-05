@@ -236,3 +236,62 @@ footer {
     /* Adds a subtle text reflection shadow so the gold stands out beautifully on light blue */
     text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6), 0px 1px 1px rgba(0, 0, 0, 0.15);
 }
+/* --- EXPANDABLE ART CARD EXTENSIONS --- */
+
+/* Hidden block layout by default */
+.expanded-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    margin-top: 0;
+}
+
+/* When the card gets the .expanded class via user click, it stretches downward smoothly */
+.art-card.expanded {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    border: 1px solid var(--accent-blue);
+}
+
+.art-card.expanded .expanded-content {
+    max-height: 250px; /* Gives room for description + button to unfurl */
+    opacity: 1;
+    margin-top: 1.2rem;
+    border-top: 1px solid #f0f4f8;
+    padding-top: 1rem;
+}
+
+.art-description {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+}
+
+/* Premium styled Inquire Button */
+.inquire-btn {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background-color: #c5a059; /* Matching your elegant gold theme text color */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 6px rgba(197, 160, 89, 0.2);
+}
+
+.inquire-btn:hover {
+    background-color: #b08d4b;
+    transform: scale(1.01);
+}
+
+/* Overrides the sliding timeline engine when a card is clicked open */
+.marquee-track.animation-paused {
+    animation-play-state: paused !important;
+}
