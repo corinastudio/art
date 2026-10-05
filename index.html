@@ -130,5 +130,21 @@
         <p>&copy; 2026 My Art Studio. Crafted with care.</p>
     </footer>
 
+<!-- Script that automatically turns titles into funky, multi-colored text -->
+    <script>
+        document.querySelectorAll('.logo, .hero h2, .section-title').forEach(title => {
+            const text = title.textContent;
+            title.innerHTML = ''; // Clear original plain text
+            
+            // Loop through each letter and wrap it in a colored span
+            [...text].forEach((char, index) => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.className = `funky-color-${(index % 5) + 1}`; // Rotates through 5 funky styles
+                title.appendChild(span);
+            });
+        });
+    </script>
+</body>
 </body>
 </html>
