@@ -1,3 +1,4 @@
+```css
 /* Universal Reset & Fonts */
 * {
     margin: 0;
@@ -6,7 +7,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Custom Soft Blue Color Scheme */
 :root {
     --bg-soft-blue: #d0e1fd;      
     --accent-blue: #b3cffb;       
@@ -20,7 +20,6 @@ body {
     line-height: 1.6;
 }
 
-/* Header & Navigation Bar */
 header {
     background: #ffffff;
     display: flex;
@@ -33,212 +32,108 @@ header {
     z-index: 100;
 }
 
-.logo {
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
+.logo { font-size: 1.4rem; font-weight: 700; }
+nav ul { display: flex; list-style: none; }
+nav ul li { margin-left: 2rem; }
+nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
+.disabled-link { color: var(--text-muted); font-style: italic; }
 
-nav ul {
-    display: flex;
-    list-style: none;
-}
-
-nav ul li {
-    margin-left: 2rem;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
-nav ul li a:hover {
-    color: #4a5568;
-}
-
-.disabled-link {
-    color: var(--text-muted);
-    font-style: italic;
-}
-
-/* Hero / Welcome Section */
 .hero {
     text-align: center;
     padding: 5rem 1rem;
     background: linear-gradient(180deg, #ffffff, var(--bg-soft-blue));
 }
 
-.hero h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
+.hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+.content-section { padding: 5rem 5%; overflow: hidden; }
+.grey-bg { background-color: #bddefb; border-radius: 12px; margin: 0 5%; }
+.section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3rem; }
 
-/* Content Sections Layout */
-.content-section {
-    padding: 5rem 5%;
-    overflow: hidden; /* Prevents whole website from scrolling sideways */
-}
-
-.grey-bg {
-    background-color: #bddefb; 
-    border-radius: 12px;
-    margin: 0 5%;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 3rem;
-}
-
-/* --- THE TRACK ENGINE FIX --- */
-
-.marquee-container {
-    width: 100%;
-    overflow: hidden;
-    padding: 2rem 0;
-}
-
-/* Forces items to stay side-by-side in a line, no matter what */
+/* --- RUNNING TRACK --- */
+.marquee-container { width: 100%; overflow: hidden; padding: 2rem 0; }
 .marquee-track {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     gap: 30px;
     width: max-content;
-    animation: scrollArt 30s linear infinite;
+    animation: scrollArt 20s linear infinite;
 }
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-track.animation-paused { animation-play-state: paused !important; }
 
-/* Pauses movement when you hover over a card */
-.marquee-track:hover {
-    animation-play-state: paused;
-}
-
-/* Hardcoded card dimensions so it NEVER stacks vertically */
 .art-card {
     background: #ffffff;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    width: 380px; /* Fixed structural width */
-    flex-shrink: 0; /* Prevents browser from squeezing the cards flat */
+    width: 380px; 
+    flex-shrink: 0;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
-.art-card:hover {
-    transform: translateY(-8px);
-}
-
-/* Hardcoded image placeholder box */
-.art-image {
-    width: 100%;
-    height: 300px; /* Fixed height block */
-    display: block;
-    object-fit: cover; 
-    background-color: var(--accent-blue); /* Solid soft-blue box displays if image fails */
-}
-
-.art-info {
-    padding: 1.5rem;
-    background: #ffffff;
-}
-
-.art-info h4 {
-    font-size: 1.2rem;
-    margin-bottom: 0.25rem;
-}
-
-.art-meta {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-bottom: 1rem;
-}
-
-.price {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-/* Continuous Animation Loop Math */
-@keyframes scrollArt {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        /* Moves left precisely by 5 cards (380px each) + 5 gaps (30px each) */
-        transform: translateX(calc(-5 * (380px + 30px)));
-    }
-}
-
-/* --- PROCESS VIDEO SECTION --- */
-.video-container {
-    max-width: 800px;
-    margin: 0 auto;
+/* --- THE IMAGE BUBBLE BOX --- */
+.slider-container {
     position: relative;
-    padding-bottom: 56.25%; 
-    height: 0;
-    border-radius: 8px;
+    width: 100%;
+    height: 300px;
+    background-color: var(--accent-blue);
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-.video-container iframe {
+.slider-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slider-track .art-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: zoom-in;
 }
 
-/* --- TEXTILES PREVIEW SECTION --- */
-.preview-box {
-    background: #ffffff;
-    border: 2px dashed var(--text-muted);
-    border-radius: 8px;
-    padding: 3rem;
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
+.slider-track .art-image.active {
+    opacity: 1;
+    z-index: 2;
 }
 
-.preview-box h4 {
-    margin-bottom: 1rem;
+/* Navigational Arrows */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.75);
     color: var(--text-dark);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
 }
 
-/* --- FOOTER --- */
-footer {
-    text-align: center;
-    padding: 3rem;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
+.nav-arrow:hover { background: #ffffff; }
+.prev { left: 12px; z-index: 15; }
+.next { right: 12px; z-index: 15; }
 
-/* --- SOPHISTICATED GOLD TYPOGRAPHY --- */
+.art-info { padding: 1.5rem; background: #ffffff; }
+.art-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+.price { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; }
 
-/* Import a refined, elegant font from Google Fonts */
-@import url('https://googleapis.com');
-
-/* Apply the gold typography specifically to your main branding, subtitles, and headings */
-.logo, .hero h2, .section-title {
-    font-family: 'Playfair Display', Georgia, serif !important;
-    font-weight: 700;
-    letter-spacing: 1px;
-    
-    /* A premium, soft metallic gold color */
-    color: #c5a059 !important; 
-    
-    /* Adds a subtle text reflection shadow so the gold stands out beautifully on light blue */
-    text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6), 0px 1px 1px rgba(0, 0, 0, 0.15);
-}
-/* --- EXPANDABLE ART CARD EXTENSIONS --- */
-
-/* Hidden block layout by default */
+/* Fixed layout overflow calculations */
 .expanded-content {
     max-height: 0;
     opacity: 0;
@@ -247,51 +142,90 @@ footer {
     margin-top: 0;
 }
 
-/* When the card gets the .expanded class via user click, it stretches downward smoothly */
-.art-card.expanded {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-    border: 1px solid var(--accent-blue);
-}
-
 .art-card.expanded .expanded-content {
-    max-height: 250px; /* Gives room for description + button to unfurl */
+    max-height: 300px; 
     opacity: 1;
-    margin-top: 1.2rem;
+    margin-top: 1rem;
     border-top: 1px solid #f0f4f8;
     padding-top: 1rem;
 }
 
-.art-description {
-    font-size: 0.95rem;
-    color: var(--text-dark);
-    margin-bottom: 1.2rem;
-    line-height: 1.5;
-}
+.art-description { font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.5; color: var(--text-dark); }
 
-/* Premium styled Inquire Button */
 .inquire-btn {
     display: inline-block;
     width: 100%;
     text-align: center;
-    background-color: #c5a059; /* Matching your elegant gold theme text color */
+    background-color: #c5a059; 
     color: #ffffff;
-    text-decoration: none;
+    border: none;
     padding: 0.75rem 1rem;
     font-weight: 600;
-    font-size: 0.95rem;
     border-radius: 6px;
-    letter-spacing: 0.5px;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    box-shadow: 0 2px 6px rgba(197, 160, 89, 0.2);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.inquire-btn:hover { background-color: #b08d4b; }
+
+/* --- POPUP WINDOW MODALS --- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(26, 37, 54, 0.8);
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
 }
 
-.inquire-btn:hover {
-    background-color: #b08d4b;
-    transform: scale(1.01);
+.modal-content {
+    width: 500px;
+    height: 500px;
+    border-radius: 6px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
 }
 
-/* Overrides the sliding timeline engine when a card is clicked open */
-.marquee-track.animation-paused {
-    animation-play-state: paused !important;
+.modal-card {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 480px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    z-index: 210;
+}
+
+.modal-card h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #c5a059; margin-bottom: 0.5rem; }
+.modal-email-note { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+.modal-card input, .modal-card textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #cbdbe5;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+@keyframes scrollArt {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-3 * (380px + 30px))); } 
+}
+
+/* --- SOPHISTICATED GOLD TYPOGRAPHY --- */
+@import url('https://googleapis.com');
+.logo, .hero h2, .section-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-weight: 700;
+    color: #c5a059 !important; 
+    text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6), 0px 1px 1px rgba(0, 0, 0, 0.15);
 }
