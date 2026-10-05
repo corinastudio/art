@@ -157,24 +157,39 @@
         <p>&copy; 2026 My Art Studio. Crafted with care.</p>
     </footer>
 
-    <!-- Interactive script to elongate cards and freeze motion dynamically on click -->
+    <!-- Interactive script to elongate cards, freeze motion, and close when clicking away -->
     <script>
         function toggleCard(cardElement) {
             const track = document.getElementById('artTrack');
             const isOpen = cardElement.classList.contains('expanded');
             
-            // Close any open cards
+            // Close any open cards first
             document.querySelectorAll('.art-card').forEach(card => {
                 card.classList.remove('expanded');
             });
             track.classList.remove('animation-paused');
 
-            // Open clicked card
+            // Open clicked card if it wasn't already open
             if (!isOpen) {
                 cardElement.classList.add('expanded');
                 track.classList.add('animation-paused');
             }
         }
+
+        // Global click listener to detect clicking outside the art cards
+        document.addEventListener('click', function(event) {
+            const track = document.getElementById('artTrack');
+            
+            // If the user clicked something that is NOT an art card, close any open cards
+            if (!event.target.closest('.art-card')) {
+                document.querySelectorAll('.art-card').forEach(card => {
+                    card.classList.remove('expanded');
+                });
+                if (track) {
+                    track.classList.remove('animation-paused');
+                }
+            }
+        });
     </script>
 </body>
 </html>
