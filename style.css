@@ -1,3 +1,4 @@
+/```css
 /* Universal Reset & Fonts */
 * {
     margin: 0;
@@ -47,13 +48,42 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 .grey-bg { background-color: #bddefb; border-radius: 12px; margin: 0 5%; padding: 5rem 5%; }
 .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3rem; width: 100%; }
 
-/* --- THE AUTOMATED CAROUSEL ENGINE --- */
+/* --- MARGIN ARROW STRUCTURAL FRAME --- */
+.gallery-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px; /* Leaves clean breathing space on margins for arrows */
+}
+
+/* Screen Margin Navigation Arrows */
+.gallery-nav-arrow {
+    position: absolute;
+    top: 150px; /* Centers directly against image container height */
+    transform: translateY(-50%);
+    background: #ffffff;
+    color: var(--text-dark);
+    border: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: background 0.2s, transform 0.2s;
+}
+.gallery-nav-arrow:hover { background: #f0f4f8; transform: translateY(-50%) scale(1.05); }
+.left-arrow { left: 0; }
+.right-arrow { right: 0; }
+
 .marquee-container { 
     width: 100%; 
     overflow: hidden; 
     padding: 2rem 0;
-    display: flex;
-    justify-content: flex-start;
 }
 
 .marquee-track {
@@ -62,11 +92,8 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     flex-wrap: nowrap !important;
     gap: 30px;
     width: max-content;
-    animation: scrollArt 35s linear infinite;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Beautiful snappy shift transition */
 }
-
-.marquee-track:hover { animation-play-state: paused; }
-.marquee-track.animation-paused { animation-play-state: paused !important; }
 
 .art-card {
     background: #ffffff;
@@ -111,7 +138,7 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     z-index: 2;
 }
 
-/* Navigation Overlay Arrows */
+/* Navigation Overlay Arrows for internal card slides */
 .nav-arrow {
     position: absolute;
     top: 50%;
@@ -247,12 +274,6 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 
 footer { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 0.9rem; }
 
-/* Timeline Loop Math handles 5 cards loops seamlessly */
-@keyframes scrollArt {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-5 * (380px + 30px))); } 
-}
-
 /* --- SOPHISTICATED GOLD TYPOGRAPHY --- */
 @import url('https://googleapis.com');
 .logo, .hero h2, .section-title {
@@ -260,4 +281,3 @@ footer { text-align: center; padding: 3rem; color: var(--text-muted); font-size:
     font-weight: 700;
     color: #c5a059 !important; 
     text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6), 0px 1px 1px rgba(0, 0, 0, 0.15);
-}
