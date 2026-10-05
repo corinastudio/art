@@ -1,4 +1,3 @@
-/```css
 /* Universal Reset & Fonts */
 * {
     margin: 0;
@@ -15,13 +14,14 @@
 }
 
 body {
-    background-color: var(--bg-soft-blue);
+    background-color: #d0e1fd !important; /* Locks down the soft blue base */
     color: var(--text-dark);
     line-height: 1.6;
 }
 
 header {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +29,7 @@ header {
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 10000; /* Stays above the background video layer */
 }
 
 .logo { font-size: 1.4rem; font-weight: 700; }
@@ -40,12 +40,13 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 .hero {
     text-align: center;
     padding: 5rem 1rem;
-    background: linear-gradient(180deg, #ffffff, var(--bg-soft-blue));
+    background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(208,225,253,0.3)) !important;
+    backdrop-filter: blur(4px);
 }
 
 .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
 .content-section { padding: 5rem 0; overflow: hidden; width: 100%; text-align: center; }
-.grey-bg { background-color: #bddefb; border-radius: 12px; margin: 0 5%; padding: 5rem 5%; }
+.grey-bg { background-color: rgba(189,222,251,0.65); backdrop-filter: blur(4px); padding: 5rem 5%; border-radius: 12px; margin: 0 5%; }
 .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3rem; width: 100%; }
 
 /* --- MARGIN ARROW STRUCTURAL FRAME --- */
@@ -53,13 +54,13 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 60px; /* Leaves clean breathing space on margins for arrows */
+    padding: 0 60px; /* Leaves breathing space for navigation arrows */
 }
 
 /* Screen Margin Navigation Arrows */
 .gallery-nav-arrow {
     position: absolute;
-    top: 150px; /* Centers directly against image container height */
+    top: 150px; 
     transform: translateY(-50%);
     background: #ffffff;
     color: var(--text-dark);
@@ -69,7 +70,7 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     border-radius: 50%;
     font-size: 1.2rem;
     cursor: pointer;
-    z-index: 80;
+    z-index: 10000; /* Keeps arrows clickable over the background */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -92,7 +93,7 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     flex-wrap: nowrap !important;
     gap: 30px;
     width: max-content;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Beautiful snappy shift transition */
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Snappy manual shifts */
 }
 
 .art-card {
@@ -104,6 +105,8 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     flex-shrink: 0;
     transition: transform 0.3s ease;
     text-align: left;
+    position: relative;
+    z-index: 10000; /* Keeps cards clickable over the background */
 }
 
 /* Slider Frame Box inside Card Bubble */
@@ -216,7 +219,7 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(26, 37, 54, 0.8);
-    z-index: 200;
+    z-index: 20000; /* Floats above everything */
     justify-content: center;
     align-items: center;
 }
@@ -280,156 +283,28 @@ footer { text-align: center; padding: 3rem; color: var(--text-muted); font-size:
     font-family: 'Playfair Display', Georgia, serif !important;
     font-weight: 700;
     color: #c5a059 !important; 
-text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6), 0px 1px 1px rgba(0, 0, 0, 0.15);}
+    text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6), 0px 1px 1px rgba(0, 0, 0, 0.15);
+}
 
 /* ==========================================================================
-   MOBILE & TABLET RESPONSIVENESS MODULE
+   FULL-SCREEN BACKGROUND VIDEO LAYER OVERRIDES
    ========================================================================== */
-
-@media (max-width: 768px) {
-    /* 1. Adjust global page paddings so content doesn't hug the screen edge */
-    .hero {
-        padding: 3.5rem 1rem;
-    }
-    .hero h2 {
-        font-size: 2rem; /* Scales heading text down slightly for smaller screens */
-    }
-    .content-section {
-        padding: 3rem 0;
-    }
-    .grey-bg {
-        margin: 0 3%;
-        padding: 3rem 3%;
-    }
-
-    /* 2. Re-align the Margin Navigation Frame for small viewports */
-    .gallery-wrapper {
-        padding: 0 45px; /* Narrows side margins slightly to give cards more breathing room */
-    }
-
-    .gallery-nav-arrow {
-        width: 38px;
-        height: 38px;
-        font-size: 1rem;
-        top: 125px; /* Re-centers navigation arrows against scaled-down slider heights */
-    }
-
-    /* 3. FLUID CARD SCALING ENGINE (Prevents clipping bugs on mobile screens) */
-    .art-card {
-        width: calc(100vw - 120px); /* Dynamically shrinks the width based on the phone's viewport width */
-        max-width: 380px;
-    }
-
-    .slider-container {
-        height: 250px; /* Lowers image block height proportionally for smaller phones */
-    }
-
-    /* 4. Updates the manual arrow navigation shift step sizes to match the new fluid widths */
-    .marquee-track {
-        gap: 20px; /* Slightly tighter gap on mobile layouts */
-    }
-}
-
-/* Adjustments for ultra-small portrait phone screens */
-@media (max-width: 480px) {
-    header {
-        flex-direction: column; /* Stacks your logo above the navigation links if room runs out */
-        gap: 1rem;
-        padding: 1rem 5%;
-    }
-    nav ul li {
-        margin: 0 0.75rem; /* Evenly spaces menu buttons across screen widths */
-    }
-    .gallery-wrapper {
-        padding: 0 35px;
-    }
-    .art-card {
-        width: calc(100vw - 90px);
-    }
-    .slider-container {
-        height: 220px;
-    }
-}
-/* --- PREMIUM CARD HOVER INTERACTION OVERRIDES --- */
-
-/* Smoothly lifts the white bubble and sharpens its shadow when a user hovers over a card */
-.art-card {
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease !important;
-}
-
-.art-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(26, 37, 54, 0.12);
-}
-
-/* Subtle cinematic lens zoom inside the image container without spilling out of the borders */
-.slider-container {
-    perspective: 1000px;
-}
-
-.slider-track .art-image {
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease !important;
-}
-
-.art-card:hover .slider-track .art-image.active {
-    transform: scale(1.04); /* Softly magnifies the artwork details on mouse over */
-}
-
-/* --- INSTAGRAM VIDEO GRID STYLING --- */
-.instagram-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    padding: 0 5%;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.instagram-video-box {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    width: 320px; /* Standard optimized Instagram width footprint */
-    height: 480px; /* Matches standard vertical 9:16 mobile aspect constraints */
-    overflow: hidden;
-}
-
-.insta-placeholder-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--accent-blue);
-    color: var(--text-dark);
-    font-weight: 600;
-}
-
-/* Fluid scaling rules for small mobile devices */
-@media (max-width: 768px) {
-    .instagram-video-box {
-        width: 100%;
-        max-width: 320px;
-        height: 440px;
-    }
-}
-	
-	.instagram-bg-wrapper {
+.instagram-bg-wrapper {
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
-    z-index: -1;
+    z-index: 9999; /* Stacks correctly for security triggers */
     overflow: hidden;
-    background-color: #d0e1fd;
+    pointer-events: none; /* Mouse clicks pass directly to your art cards below */
+    mix-blend-mode: multiply; /* Blends nicely with the light blue base */
+    opacity: 0.28; /* Keeps background video beautifully subtle */
 }
 
 .instagram-bg-frame {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 120vw; height: 120vh;
-    pointer-events: none;
+    width: 140vw; height: 140vh;
 }
 
 .instagram-bg-frame iframe {
@@ -438,13 +313,7 @@ text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6), 0px 1px 1px rgba(0, 0, 0, 0.1
     min-height: 100vh !important;
     border: none !important;
     box-shadow: none !important;
-    opacity: 0.35; /* Softly blends the backdrop video into the blue canvas */
 }
-
-/* Translucent panel styling overrides */
-body { background: transparent; }
-.hero { background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(208,225,253,0.5)); backdrop-filter: blur(4px); }
-.grey-bg { background-color: rgba(189,222,251,0.65); backdrop-filter: blur(4px); }
 
 /* ==========================================================================
    STANDALONE INSTAGRAM GRID SECTION
@@ -465,7 +334,7 @@ body { background: transparent; }
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     width: 320px;
     height: 480px;
-    overflow-y: auto; /* Enables scrolling internal details inside the player widget slot */
+    overflow-y: auto;
 }
 
 .insta-placeholder-content {
@@ -476,9 +345,23 @@ body { background: transparent; }
     font-weight: 600;
 }
 
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVENESS MODULE
+   ========================================================================== */
 @media (max-width: 768px) {
-    .instagram-video-box {
-        width: 100%; max-width: 320px; height: 440px;
-    }
+    .hero { padding: 3.5rem 1rem; }
+    .hero h2 { font-size: 2rem; }
+    .content-section { padding: 3rem 0; }
+    .gallery-wrapper { padding: 0 45px; }
+    .gallery-nav-arrow { width: 38px; height: 38px; font-size: 1rem; top: 125px; }
+    .art-card { width: calc(100vw - 120px); max-width: 380px; }
+    .slider-container { height: 250px; }
+    .instagram-video-box { width: 100%; max-width: 320px; height: 440px; }
 }
-	
+
+@media (max-width: 480px) {
+    header { flex-direction: column; gap: 1rem; padding: 1rem 5%; }
+    nav ul li { margin: 0 0.75rem; }
+    .gallery-wrapper { padding: 0 35px; }
+    .art-card { width: calc(100vw - 90px); }
+    .slider-container { height: 220px; }
