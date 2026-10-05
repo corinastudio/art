@@ -218,3 +218,28 @@ footer {
     color: var(--text-muted);
     font-size: 0.9rem;
 }
+
+/* --- FUNKY TYPOGRAPHY & LETTER COLORS --- */
+
+/* Import a clean, playful, bold rounded font from Google Fonts */
+@import url('https://googleapis.com');
+
+/* Apply the funky font specifically to your main branding, subtitles, and headings */
+.logo, .hero h2, .section-title {
+    font-family: 'Fredoka', sans-serif !important;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* Make sure spaces don't collapse when letters are split up */
+.logo span, .hero h2 span, .section-title span {
+    display: inline-block;
+    white-space: pre;
+}
+
+/* The 5 custom alternating colors */
+.funky-color-1 { color: #ff6b6b; } /* Vivid Coral */
+.funky-color-2 { color: #00adb5; } /* Bright Teal */
+.funky-color-3 { color: #ffbe0b; } /* Sunset Yellow-Gold */
+.funky-color-4 { color: #a200ff; } /* Rich Purple-Plum */
+.funky-color-5 { color: #52b788; } /* Fresh Lime Green */
