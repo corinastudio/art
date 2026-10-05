@@ -8,13 +8,8 @@
 </head>
 <body>
 
-    <!-- Locked Full-Screen Instagram Background Layer -->
-    <div class="instagram-bg-wrapper">
-        <div class="instagram-bg-frame">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://instagram.com" data-instgrm-version="14"></blockquote>
-        </div>
-    </div>
-
+    <!-- Locked Full-Screen Visual Base Layer -->
+    <div class="instagram-bg-wrapper"></div>
 
     <!-- Navigation Bar -->
     <header>
@@ -23,7 +18,7 @@
             <ul>
                 <li><a href="#gallery">Art Gallery</a></li>
                 <li><a href="#prints">Prints</a></li>
-                <li><a href="#instagram-feed">@just.want.to.paint</a></li>
+                <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">@just.want.to.paint</a></li>
             </ul>
         </nav>
     </header>
@@ -31,7 +26,7 @@
     <!-- Hero / Intro Section -->
     <section class="hero">
         <h2>Original Art & Prints</h2>
-        <p>Explore original paintings, fine art print collections, and process videos.</p>
+        <p>Explore original paintings, fine art print collections, and shop straight from the studio.</p>
     </section>
 
     <main>
@@ -52,8 +47,8 @@
                             <div class="slider-container">
                                 <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">❮</button>
                                 <div class="slider-track" data-current-index="0">
-                                    <div class="art-image active" style="background-color: #a0c4ff;" onclick="zoomImage(this, event)"></div>
-                                    <div class="art-image" style="background-color: #bdb2ff;" onclick="zoomImage(this, event)"></div>
+                                    <img src="art1.jpg" alt="Ocean Breeze" class="art-image active" onclick="zoomImage(this, event)">
+                                    <img src="art1-detail.jpg" alt="Ocean Breeze Detail" class="art-image" onclick="zoomImage(this, event)">
                                 </div>
                                 <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">❯</button>
                             </div>
@@ -73,8 +68,8 @@
                             <div class="slider-container">
                                 <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">❮</button>
                                 <div class="slider-track" data-current-index="0">
-                                    <div class="art-image active" style="background-color: #ffadad;" onclick="zoomImage(this, event)"></div>
-                                    <div class="art-image" style="background-color: #ffd166;" onclick="zoomImage(this, event)"></div>
+                                    <img src="art2.jpg" alt="Morning Mist" class="art-image active" onclick="zoomImage(this, event)">
+                                    <img src="art2-detail.jpg" alt="Morning Mist Detail" class="art-image" onclick="zoomImage(this, event)">
                                 </div>
                                 <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">❯</button>
                             </div>
@@ -88,13 +83,13 @@
                                 </div>
                             </div>
                         </div>
-						<!-- Art Item 3 -->
+						 <!-- Art Item 3 -->
                         <div class="art-card" onclick="toggleCard(this)">
                             <div class="slider-container">
                                 <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">❮</button>
                                 <div class="slider-track" data-current-index="0">
-                                    <div class="art-image active" style="background-color: #caffbf;" onclick="zoomImage(this, event)"></div>
-                                    <div class="art-image" style="background-color: #9bf6ff;" onclick="zoomImage(this, event)"></div>
+                                    <img src="art3.jpg" alt="Golden Hour" class="art-image active" onclick="zoomImage(this, event)">
+                                    <img src="art3-detail.jpg" alt="Golden Hour Detail" class="art-image" onclick="zoomImage(this, event)">
                                 </div>
                                 <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">❯</button>
                             </div>
@@ -114,8 +109,8 @@
                             <div class="slider-container">
                                 <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">❮</button>
                                 <div class="slider-track" data-current-index="0">
-                                    <div class="art-image active" style="background-color: #ffd166;" onclick="zoomImage(this, event)"></div>
-                                    <div class="art-image" style="background-color: #ffadad;" onclick="zoomImage(this, event)"></div>
+                                    <img src="art4.jpg" alt="Forest Path" class="art-image active" onclick="zoomImage(this, event)">
+                                    <img src="art4-detail.jpg" alt="Forest Path Detail" class="art-image" onclick="zoomImage(this, event)">
                                 </div>
                                 <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">❯</button>
                             </div>
@@ -135,8 +130,8 @@
                             <div class="slider-container">
                                 <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">❮</button>
                                 <div class="slider-track" data-current-index="0">
-                                    <div class="art-image active" style="background-color: #ffc6ff;" onclick="zoomImage(this, event)"></div>
-                                    <div class="art-image" style="background-color: #bdb2ff;" onclick="zoomImage(this, event)"></div>
+                                    <img src="art5.jpg" alt="Midnight Reflection" class="art-image active" onclick="zoomImage(this, event)">
+                                    <img src="art5-detail.jpg" alt="Midnight Reflection Detail" class="art-image" onclick="zoomImage(this, event)">
                                 </div>
                                 <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">❯</button>
                             </div>
@@ -161,9 +156,10 @@
             <h3 class="section-title">Fine Art Prints</h3>
             <div class="prints-grid">
                 
+                <!-- Print 1 -->
                 <div class="art-card">
                     <div class="slider-container">
-                        <div class="art-image active" style="background-color: #e2e8f0;"></div>
+                        <img src="print1.jpg" alt="Ocean Breeze Print" class="art-image active" onclick="zoomImage(this, event)">
                     </div>
                     <div class="art-info">
                         <h4>Ocean Breeze (Print)</h4>
@@ -173,9 +169,10 @@
                     </div>
                 </div>
 
+                <!-- Print 2 -->
                 <div class="art-card">
                     <div class="slider-container">
-                        <div class="art-image active" style="background-color: #e2e8f0;"></div>
+                        <img src="print2.jpg" alt="Golden Hour Print" class="art-image active" onclick="zoomImage(this, event)">
                     </div>
                     <div class="art-info">
                         <h4>Golden Hour (Print)</h4>
@@ -185,9 +182,10 @@
                     </div>
                 </div>
 
+                <!-- Print 3 -->
                 <div class="art-card">
                     <div class="slider-container">
-                        <div class="art-image active" style="background-color: #e2e8f0;"></div>
+                        <img src="print3.jpg" alt="Midnight Reflection Print" class="art-image active" onclick="zoomImage(this, event)">
                     </div>
                     <div class="art-info">
                         <h4>Midnight Reflection (Print)</h4>
@@ -199,14 +197,12 @@
 
             </div>
         </section>
-		
-    </main>
-	
+		 </main>
 
     <!-- FULL SCREEN LIGHTBOX MODAL FOR IMAGES -->
     <div id="lightbox" class="modal" onclick="closeLightbox()">
         <span class="close-modal">&times;</span>
-        <div class="modal-content" id="lightboxImg"></div>
+        <img class="modal-content" id="lightboxImg">
     </div>
 
     <!-- INQUIRY EMAIL MODAL POPUP -->
@@ -264,7 +260,6 @@
             var cardWidth = 380 + 30; // card width + gap
             var totalCards = document.querySelectorAll('#artTrack .art-card').length;
             
-            // Limit navigation bounds so cards don't roll into empty void
             currentGalleryIndex += direction;
             if (currentGalleryIndex < 0) currentGalleryIndex = 0;
             if (currentGalleryIndex > totalCards - 1) currentGalleryIndex = totalCards - 1;
@@ -287,12 +282,12 @@
         }
 
         // --- LIGHTBOX ZOOM ---
-        function zoomImage(divElement, event) {
+        function zoomImage(imgElement, event) {
             event.stopPropagation();
             var lightbox = document.getElementById('lightbox');
             var lightboxImg = document.getElementById('lightboxImg');
             lightbox.style.display = "flex";
-            lightboxImg.style.backgroundColor = divElement.style.backgroundColor;
+            lightboxImg.src = imgElement.src;
         }
 
         function closeLightbox() {
