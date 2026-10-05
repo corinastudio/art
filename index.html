@@ -10,7 +10,7 @@
 
     <!-- Navigation Bar -->
     <header>
-        <div class="logo">My Art Studio</div>
+        <div class="logo">Corina's Art Studio</div>
         <nav>
             <ul>
                 <li><a href="#gallery">Art Gallery</a></li>
@@ -27,41 +27,82 @@
     </section>
 
     <main>
-        <!-- Section 1: Art Gallery (3 Pieces with Prices) -->
+         <!-- Section 1: Art Gallery (5 Pieces moving in a line) -->
         <section id="gallery" class="content-section">
             <h3 class="section-title">Available Artworks</h3>
-            <div class="art-grid">
-                
-                <!-- Art Item 1 -->
-                <div class="art-card">
-                    <img src="art1.jpg" alt="Ocean Breeze Painting" class="art-image">
-                    <div class="art-info">
-                        <h4>Ocean Breeze</h4>
-                        <p class="art-meta">16" x 20" | Acrylic on Canvas</p>
-                        <p class="price">$250.00</p>
+            
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    
+                    <!-- Art Item 1 -->
+                    <div class="art-card">
+                        <img src="art1.jpg" alt="Ocean Breeze Painting" class="art-image">
+                        <div class="art-info">
+                            <h4>Ocean Breeze</h4>
+                            <p class="art-meta">16" x 20" | Acrylic</p>
+                            <p class="price">$250.00</p>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Art Item 2 -->
-                <div class="art-card">
-                    <img src="art2.jpg" alt="Morning Mist Painting" class="art-image">
-                    <div class="art-info">
-                        <h4>Morning Mist</h4>
-                        <p class="art-meta">12" x 12" | Oil on Wood Panel</p>
-                        <p class="price">$180.00</p>
+                    <!-- Art Item 2 -->
+                    <div class="art-card">
+                        <img src="art2.jpg" alt="Morning Mist Painting" class="art-image">
+                        <div class="art-info">
+                            <h4>Morning Mist</h4>
+                            <p class="art-meta">12" x 12" | Oil</p>
+                            <p class="price">$180.00</p>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Art Item 3 -->
-                <div class="art-card">
-                    <img src="art3.jpg" alt="Golden Hour Painting" class="art-image">
-                    <div class="art-info">
-                        <h4>Golden Hour</h4>
-                        <p class="art-meta">24" x 36" | Mixed Media</p>
-                        <p class="price">$450.00</p>
+                    <!-- Art Item 3 -->
+                    <div class="art-card">
+                        <img src="art3.jpg" alt="Golden Hour Painting" class="art-image">
+                        <div class="art-info">
+                            <h4>Golden Hour</h4>
+                            <p class="art-meta">24" x 36" | Mixed Media</p>
+                            <p class="price">$450.00</p>
+                        </div>
                     </div>
-                </div>
 
+                    <!-- Art Item 4 -->
+                    <div class="art-card">
+                        <img src="art4.jpg" alt="Forest Path Painting" class="art-image">
+                        <div class="art-info">
+                            <h4>Forest Path</h4>
+                            <p class="art-meta">11" x 14" | Gouache</p>
+                            <p class="price">$150.00</p>
+                        </div>
+                    </div>
+
+                    <!-- Art Item 5 -->
+                    <div class="art-card">
+                        <img src="art3.jpg" alt="Midnight Reflection Painting" class="art-image">
+                        <div class="art-info">
+                            <h4>Midnight Reflection</h4>
+                            <p class="art-meta">20" x 20" | Acrylic</p>
+                            <p class="price">$320.00</p>
+                        </div>
+                    </div>
+
+                    <!-- DUPLICATES: We copy items 1 & 2 here so the loop looks completely seamless when it resets -->
+                    <div class="art-card" aria-hidden="true">
+                        <img src="art1.jpg" alt="" class="art-image">
+                        <div class="art-info">
+                            <h4>Ocean Breeze</h4>
+                            <p class="art-meta">16" x 20" | Acrylic</p>
+                            <p class="price">$250.00</p>
+                        </div>
+                    </div>
+                    <div class="art-card" aria-hidden="true">
+                        <img src="art2.jpg" alt="" class="art-image">
+                        <div class="art-info">
+                            <h4>Morning Mist</h4>
+                            <p class="art-meta">12" x 12" | Oil</p>
+                            <p class="price">$180.00</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
 
