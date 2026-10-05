@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +15,8 @@
         <nav>
             <ul>
                 <li><a href="#gallery">Art Gallery</a></li>
+                <li><a href="#prints">Prints</a></li>
                 <li><a href="#process">Behind the Scenes</a></li>
-                <li><a href="#prints">Prints (Coming Soon)</a></li>
             </ul>
         </nav>
     </header>
@@ -23,11 +24,11 @@
     <!-- Hero / Intro Section -->
     <section class="hero">
         <h2>Original Art & Prints</h2>
-        <p>Explore original paintings, process videos, and upcoming fine art print collections.</p>
+        <p>Explore original paintings, fine art print collections, and process videos.</p>
     </section>
 
     <main>
-        <!-- Section 1: Art Gallery with 5 Centered, Expandable Cards -->
+        <!-- Section 1: Art Gallery with 5 Draggable, Expandable Cards -->
         <section id="gallery" class="content-section">
             <h3 class="section-title">Available Artworks</h3>
             
@@ -37,12 +38,12 @@
                     <!-- Art Item 1 -->
                     <div class="art-card" onclick="toggleCard(this)">
                         <div class="slider-container">
-                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">❮</button>
                             <div class="slider-track" data-current-index="0">
                                 <div class="art-image active" style="background-color: #a0c4ff;" onclick="zoomImage(this, event)"></div>
                                 <div class="art-image" style="background-color: #bdb2ff;" onclick="zoomImage(this, event)"></div>
                             </div>
-                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">❯</button>
                         </div>
                         <div class="art-info">
                             <h4>Ocean Breeze</h4>
@@ -58,12 +59,12 @@
                     <!-- Art Item 2 -->
                     <div class="art-card" onclick="toggleCard(this)">
                         <div class="slider-container">
-                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">❮</button>
                             <div class="slider-track" data-current-index="0">
                                 <div class="art-image active" style="background-color: #ffadad;" onclick="zoomImage(this, event)"></div>
                                 <div class="art-image" style="background-color: #ffd166;" onclick="zoomImage(this, event)"></div>
                             </div>
-                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">❯</button>
                         </div>
                         <div class="art-info">
                             <h4>Morning Mist</h4>
@@ -79,12 +80,12 @@
                     <!-- Art Item 3 -->
                     <div class="art-card" onclick="toggleCard(this)">
                         <div class="slider-container">
-                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">❮</button>
                             <div class="slider-track" data-current-index="0">
                                 <div class="art-image active" style="background-color: #caffbf;" onclick="zoomImage(this, event)"></div>
                                 <div class="art-image" style="background-color: #9bf6ff;" onclick="zoomImage(this, event)"></div>
                             </div>
-                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">❯</button>
                         </div>
                         <div class="art-info">
                             <h4>Golden Hour</h4>
@@ -96,16 +97,15 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Art Item 4 -->
+					 <!-- Art Item 4 -->
                     <div class="art-card" onclick="toggleCard(this)">
                         <div class="slider-container">
-                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">❮</button>
                             <div class="slider-track" data-current-index="0">
                                 <div class="art-image active" style="background-color: #ffd166;" onclick="zoomImage(this, event)"></div>
                                 <div class="art-image" style="background-color: #ffadad;" onclick="zoomImage(this, event)"></div>
                             </div>
-                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">❯</button>
                         </div>
                         <div class="art-info">
                             <h4>Forest Path</h4>
@@ -121,12 +121,12 @@
                     <!-- Art Item 5 -->
                     <div class="art-card" onclick="toggleCard(this)">
                         <div class="slider-container">
-                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">❮</button>
                             <div class="slider-track" data-current-index="0">
                                 <div class="art-image active" style="background-color: #ffc6ff;" onclick="zoomImage(this, event)"></div>
                                 <div class="art-image" style="background-color: #bdb2ff;" onclick="zoomImage(this, event)"></div>
                             </div>
-                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">❯</button>
                         </div>
                         <div class="art-info">
                             <h4>Midnight Reflection</h4>
@@ -139,37 +139,100 @@
                         </div>
                     </div>
 
+                    <!-- REPEATED DUPLICATES: Eliminates the blank gap in the carousel animation -->
+                    <div class="art-card" aria-hidden="true">
+                        <div class="slider-container"><div class="art-image active" style="background-color: #a0c4ff;"></div></div>
+                        <div class="art-info"><h4>Ocean Breeze</h4><p class="price">$250.00</p></div>
+                    </div>
+                    <div class="art-card" aria-hidden="true">
+                        <div class="slider-container"><div class="art-image active" style="background-color: #ffadad;"></div></div>
+                        <div class="art-info"><h4>Morning Mist</h4><p class="price">$180.00</p></div>
+                    </div>
+                    <div class="art-card" aria-hidden="true">
+                        <div class="slider-container"><div class="art-image active" style="background-color: #caffbf;"></div></div>
+                        <div class="art-info"><h4>Golden Hour</h4><p class="price">$450.00</p></div>
+                    </div>
+                    <div class="art-card" aria-hidden="true">
+                        <div class="slider-container"><div class="art-image active" style="background-color: #ffd166;"></div></div>
+                        <div class="art-info"><h4>Forest Path</h4><p class="price">$150.00</p></div>
+                    </div>
+                    <div class="art-card" aria-hidden="true">
+                        <div class="slider-container"><div class="art-image active" style="background-color: #ffc6ff;"></div></div>
+                        <div class="art-info"><h4>Midnight Reflection</h4><p class="price">$320.00</p></div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
+        <!-- New Live Section 2: Prints Gallery (Replaced textiles completely) -->
+        <section id="prints" class="content-section">
+            <h3 class="section-title">Fine Art Prints</h3>
+            <div class="prints-grid">
+                
+                <!-- Print 1 -->
+                <div class="art-card">
+                    <div class="slider-container">
+                        <div class="art-image active" style="background-color: #e2e8f0;"></div>
+                    </div>
+                    <div class="art-info">
+                        <h4>Ocean Breeze (Print)</h4>
+                        <p class="art-meta">8" x 10" | Limited Edition Giclée</p>
+                        <p class="price">$45.00</p>
+                        <button class="inquire-btn" style="margin-top:1rem;" onclick="openInquiryModal('Ocean Breeze Print', event)">Inquire About Print</button>
+                    </div>
+                </div>
+
+                <!-- Print 2 -->
+                <div class="art-card">
+                    <div class="slider-container">
+                        <div class="art-image active" style="background-color: #e2e8f0;"></div>
+                    </div>
+                    <div class="art-info">
+                        <h4>Golden Hour (Print)</h4>
+                        <p class="art-meta">8" x 10" | Limited Edition Giclée</p>
+                        <p class="price">$45.00</p>
+                        <button class="inquire-btn" style="margin-top:1rem;" onclick="openInquiryModal('Golden Hour Print', event)">Inquire About Print</button>
+                    </div>
+                </div>
+
+                <!-- Print 3 -->
+                <div class="art-card">
+                    <div class="slider-container">
+                        <div class="art-image active" style="background-color: #e2e8f0;"></div>
+                    </div>
+                    <div class="art-info">
+                        <h4>Midnight Reflection (Print)</h4>
+                        <p class="art-meta">8" x 10" | Limited Edition Giclée</p>
+                        <p class="price">$45.00</p>
+                        <button class="inquire-btn" style="margin-top:1rem;" onclick="openInquiryModal('Midnight Reflection Print', event)">Inquire About Print</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+		  <!-- Section 3: Behind the Scenes (Moved cleanly to the bottom) -->
         <section id="process" class="content-section grey-bg">
             <h3 class="section-title">Behind the Scenes</h3>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Art Process Video" allowfullscreen></iframe>
-            </div>
-        </section>
-
-        <section id="prints" class="content-section">
-            <h3 class="section-title">Prints Collection</h3>
-            <div class="preview-box">
-                <h4>Coming Late 2026</h4>
-                <p>I am currently curating a brand new collection of high-quality Giclée fine art prints, limited editions, and signed poster runs.</p>
+                <iframe src="https://youtube.com" title="Art Process Video" allowfullscreen></iframe>
             </div>
         </section>
     </main>
 
+    <!-- FULL SCREEN LIGHTBOX MODAL FOR IMAGES -->
     <div id="lightbox" class="modal" onclick="closeLightbox()">
         <span class="close-modal">&times;</span>
         <div class="modal-content" id="lightboxImg"></div>
     </div>
 
+    <!-- INQUIRY EMAIL MODAL POPUP -->
     <div id="inquiryModal" class="modal">
         <div class="modal-card">
             <span class="close-modal" onclick="closeInquiryModal()">&times;</span>
             <h4 id="inquiryTitle">Inquire About Artwork</h4>
             <p class="modal-email-note">For purchasing inquiries or framing options, please send a message directly to: <br><strong>studio@yourdomain.com</strong></p>
-            <form action="https://formspree.io/f/your-id" method="POST" id="contactForm" onclick="event.stopPropagation();">
+            <form action="https://formspree.io" method="POST" id="contactForm" onclick="event.stopPropagation();">
                 <input type="hidden" name="Artwork" id="formArtworkName">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email Address" required>
@@ -183,14 +246,23 @@
         <p>&copy; 2026 My Art Studio. Crafted with care.</p>
     </footer>
 
+    <!-- INTERACTIVE CLICK, ZOOM, AND MOUSE DRAG ENGINE -->
     <script>
+        // --- CLICK TO EXPAND PANEL LOGIC ---
         function toggleCard(cardElement) {
-            const track = document.getElementById('artTrack');
-            const isOpen = cardElement.classList.contains('expanded');
+            var track = document.getElementById('artTrack');
+            var isOpen = cardElement.classList.contains('expanded');
             
-            if (event.target.closest('.nav-arrow') || event.target.closest('.art-image') || event.target.closest('.modal')) return;
+            // Safety flags to prevent breaking when sliding or clicking overlay buttons
+            if (isDraggingText) return; 
+            if (event.target.closest('.nav-arrow')) return;
+            if (event.target.closest('.art-image')) return;
+            if (event.target.closest('.modal')) return;
 
-            document.querySelectorAll('.art-card').forEach(card => card.classList.remove('expanded'));
+            var allCards = document.querySelectorAll('.art-card');
+            for (var i = 0; i < allCards.length; i++) {
+                allCards[i].classList.remove('expanded');
+            }
             track.classList.remove('animation-paused');
 
             if (!isOpen) {
@@ -199,19 +271,26 @@
             }
         }
 
+        // --- GLOBAL OUTSIDE-CLICK TO CLOSE TRACKS ---
         document.addEventListener('click', function(event) {
-            const track = document.getElementById('artTrack');
+            var track = document.getElementById('artTrack');
             if (!event.target.closest('.art-card') && !event.target.closest('.modal')) {
-                document.querySelectorAll('.art-card').forEach(card => card.classList.remove('expanded'));
-                if (track) track.classList.remove('animation-paused');
+                var allCards = document.querySelectorAll('.art-card');
+                for (var i = 0; i < allCards.length; i++) {
+                    allCards[i].classList.remove('expanded');
+                }
+                if (track) {
+                    track.classList.remove('animation-paused');
+                }
             }
         });
 
+        // --- INTERNAL DECK FLICK SLIDER ARROWS ---
         function changeSlide(event, button, direction) {
             event.stopPropagation();
-            const sliderTrack = button.parentElement.querySelector('.slider-track');
-            const slides = sliderTrack.querySelectorAll('.art-image');
-            let currentIndex = parseInt(sliderTrack.getAttribute('data-current-index')) || 0;
+            var sliderTrack = button.parentElement.querySelector('.slider-track');
+            var slides = sliderTrack.querySelectorAll('.art-image');
+            var currentIndex = parseInt(sliderTrack.getAttribute('data-current-index')) || 0;
 
             slides[currentIndex].classList.remove('active');
             currentIndex = (currentIndex + direction + slides.length) % slides.length;
@@ -219,10 +298,11 @@
             sliderTrack.setAttribute('data-current-index', currentIndex);
         }
 
+        // --- IMAGE LIGHTBOX FULLSCREEN ZOOM OVERLAYS ---
         function zoomImage(divElement, event) {
             event.stopPropagation();
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightboxImg');
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightboxImg');
             lightbox.style.display = "flex";
             lightboxImg.style.backgroundColor = divElement.style.backgroundColor;
             document.getElementById('artTrack').classList.add('animation-paused');
@@ -232,9 +312,10 @@
             document.getElementById('lightbox').style.display = "none";
         }
 
+        // --- CONTACT MODAL POPUP WINDOW INTERACTION ---
         function openInquiryModal(artworkName, event) {
             event.stopPropagation();
-            const modal = document.getElementById('inquiryModal');
+            var modal = document.getElementById('inquiryModal');
             document.getElementById('inquiryTitle').innerText = "Inquire: " + artworkName;
             document.getElementById('formArtworkName').value = artworkName;
             modal.style.display = "flex";
@@ -245,15 +326,44 @@
             document.getElementById('inquiryModal').style.display = "none";
         }
 
-        // Horizontal Scroll Link Engine
-        const container = document.getElementById('marqueeContainer');
-        const track = document.getElementById('artTrack');
+        // --- MOUSE CLICK-AND-DRAG TRACK CONTROLLER ---
+        var container = document.getElementById('marqueeContainer');
+        var track = document.getElementById('artTrack');
+        var isDown = false;
+        var startX;
+        var currentXTransform = 0;
+        var isDraggingText = false;
 
-        container.addEventListener('wheel', function(e) {
-            if (e.deltaY !== 0) {
-                e.preventDefault();
-                container.scrollLeft += e.deltaY;
-            }
+        container.addEventListener('mousedown', function(e) {
+            isDown = true;
+            isDraggingText = false;
+            track.classList.add('dragging');
+            
+            // Read active CSS positioning coordinates matrix safely
+            var style = window.getComputedStyle(track);
+            var matrix = new WebKitCSSMatrix(style.transform);
+            currentXTransform = matrix.m41; 
+            
+            startX = e.pageX - currentXTransform;
+        });
+
+        container.addEventListener('mouseleave', function() {
+            if (!isDown) return;
+            isDown = false;
+            track.classList.remove('dragging');
+        });
+
+        container.addEventListener('mouseup', function() {
+            isDown = false;
+            track.classList.remove('dragging');
+        });
+
+        container.addEventListener('mousemove', function(e) {
+            if (!isDown) return;
+            e.preventDefault();
+            isDraggingText = true; // Flips safety flag to suppress single clicks when dragging layout
+            var x = e.pageX - startX;
+            track.style.transform = 'translateX(' + x + 'px)';
         });
     </script>
 </body>
