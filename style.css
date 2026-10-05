@@ -31,11 +31,10 @@ header {
     z-index: 100;
 }
 
-.logo { font-size: 1.4rem; font-weight: 700; text-align: center; }
+.logo { font-size: 1.4rem; font-weight: 700; }
 nav ul { display: flex; list-style: none; }
 nav ul li { margin-left: 2rem; }
 nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
-.disabled-link { color: var(--text-muted); font-style: italic; }
 
 .hero {
     text-align: center;
@@ -48,24 +47,19 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 .grey-bg { background-color: #bddefb; border-radius: 12px; margin: 0 5%; padding: 5rem 5%; }
 .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3rem; width: 100%; }
 
-/* --- MANUALLY SCROLLABLE CAROUSEL ENGINE --- */
+/* --- DRAGGABLE AUTOMATED CAROUSEL ENGINE --- */
 .marquee-container { 
     width: 100%; 
-    overflow-x: auto; 
-    padding: 2rem 5%;
+    overflow: hidden; 
+    padding: 2rem 0;
     display: flex;
     justify-content: flex-start;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    user-select: none;
 }
 
-/* Hide standard scrollbar across browsers */
-.marquee-container::-webkit-scrollbar {
-    display: none;
-}
-.marquee-container {
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
+.marquee-container:active {
+    cursor: grabbing;
 }
 
 .marquee-track {
@@ -75,9 +69,12 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     gap: 30px;
     width: max-content;
     animation: scrollArt 35s linear infinite;
+    will-change: transform;
 }
+
 .marquee-track:hover { animation-play-state: paused; }
 .marquee-track.animation-paused { animation-play-state: paused !important; }
+.marquee-track.dragging { animation: none !important; }
 
 .art-card {
     background: #ffffff;
@@ -87,7 +84,6 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     width: 380px; 
     flex-shrink: 0;
     transition: transform 0.3s ease;
-    cursor: pointer;
     text-align: left;
 }
 
@@ -151,7 +147,7 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 .art-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; }
 .price { font-size: 1.1rem; font-weight: 600; }
 
-/* Elongated Expansion Block calculations */
+/* Elongated Expansion Block */
 .expanded-content {
     max-height: 0;
     opacity: 0;
@@ -183,6 +179,17 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     transition: background 0.2s;
 }
 .inquire-btn:hover { background-color: #b08d4b; }
+
+/* --- STATIC GRID FOR PRINTS --- */
+.prints-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 5%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
 
 /* --- POPUP WINDOW OVERLAYS --- */
 .modal {
@@ -233,7 +240,7 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     font-size: 0.95rem;
 }
 
-/* Video Layout box centering updates */
+/* Video Layout box centering */
 .video-container {
     max-width: 800px;
     margin: 0 auto;
@@ -246,27 +253,16 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 }
 .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-/* Future Prints text box alignment updates */
-.preview-box {
-    background: #ffffff;
-    border: 2px dashed var(--text-muted);
-    border-radius: 8px;
-    padding: 3rem;
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-}
-.preview-box h4 { margin-bottom: 1rem; color: var(--text-dark); }
 footer { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 0.9rem; }
 
-/* Loop timeline handles the infinite background crawl seamlessly */
+/* Timeline Loop Math updated to scroll past exactly 5 original cards + gaps */
 @keyframes scrollArt {
     0% { transform: translateX(0); }
     100% { transform: translateX(calc(-5 * (380px + 30px))); } 
 }
 
 /* --- SOPHISTICATED GOLD TYPOGRAPHY --- */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+@import url('https://googleapis.com');
 .logo, .hero h2, .section-title {
     font-family: 'Playfair Display', Georgia, serif !important;
     font-weight: 700;
