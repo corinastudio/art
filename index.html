@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,7 +27,7 @@
     </section>
 
     <main>
-        <!-- Section 1: Art Gallery with Fixed Bubble Layouts -->
+	<!-- Section 1: Art Gallery Container -->
         <section id="gallery" class="content-section">
             <h3 class="section-title">Available Artworks</h3>
             
@@ -42,7 +41,6 @@
                             <div class="slider-track" data-current-index="0">
                                 <div class="art-image active" style="background-color: #a0c4ff;" onclick="zoomImage(this, event)"></div>
                                 <div class="art-image" style="background-color: #bdb2ff;" onclick="zoomImage(this, event)"></div>
-                                <div class="art-image" style="background-color: #ffc6ff;" onclick="zoomImage(this, event)"></div>
                             </div>
                             <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
                         </div>
@@ -98,12 +96,93 @@
                             </div>
                         </div>
                     </div>
+					  <!-- Art Item 4 -->
+                    <div class="art-card" onclick="toggleCard(this)">
+                        <div class="slider-container">
+                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                            <div class="slider-track" data-current-index="0">
+                                <div class="art-image active" style="background-color: #ffd166;" onclick="zoomImage(this, event)"></div>
+                                <div class="art-image" style="background-color: #ffadad;" onclick="zoomImage(this, event)"></div>
+                            </div>
+                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                        </div>
+                        <div class="art-info">
+                            <h4>Forest Path</h4>
+                            <p class="art-meta">11" x 14" | Gouache</p>
+                            <p class="price">$150.00</p>
+                            <div class="expanded-content">
+                                <p class="art-description">A vibrant, intimate botanical painting detailing woodland shadows. Rendered in premium matte designers gouache.</p>
+                                <button class="inquire-btn" onclick="openInquiryModal('Forest Path', event)">Inquire About Piece</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Art Item 5 -->
+                    <div class="art-card" onclick="toggleCard(this)">
+                        <div class="slider-container">
+                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                            <div class="slider-track" data-current-index="0">
+                                <div class="art-image active" style="background-color: #ffc6ff;" onclick="zoomImage(this, event)"></div>
+                                <div class="art-image" style="background-color: #bdb2ff;" onclick="zoomImage(this, event)"></div>
+                            </div>
+                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                        </div>
+                        <div class="art-info">
+                            <h4>Midnight Reflection</h4>
+                            <p class="art-meta">20" x 20" | Acrylic</p>
+                            <p class="price">$320.00</p>
+                            <div class="expanded-content">
+                                <p class="art-description">A moody, minimalist study of cool light playing on dark moving water. Hand-varnished for a protective satin deep-sheen luster.</p>
+                                <button class="inquire-btn" onclick="openInquiryModal('Midnight Reflection', event)">Inquire About Piece</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DUPLICATE COPIES FOR INFINITE SEAMLESS LOOPING -->
+                    <div class="art-card" onclick="toggleCard(this)" aria-hidden="true">
+                        <div class="slider-container">
+                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                            <div class="slider-track" data-current-index="0">
+                                <div class="art-image active" style="background-color: #a0c4ff;"></div>
+                                <div class="art-image" style="background-color: #bdb2ff;"></div>
+                            </div>
+                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                        </div>
+                        <div class="art-info">
+                            <h4>Ocean Breeze</h4>
+                            <p class="art-meta">16" x 20" | Acrylic</p>
+                            <p class="price">$250.00</p>
+                            <div class="expanded-content">
+                                <p class="art-description">An immersive abstract study of coastal wind currents.</p>
+                                <button class="inquire-btn">Inquire About Piece</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="art-card" onclick="toggleCard(this)" aria-hidden="true">
+                        <div class="slider-container">
+                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                            <div class="slider-track" data-current-index="0">
+                                <div class="art-image active" style="background-color: #ffadad;"></div>
+                                <div class="art-image" style="background-color: #ffd166;"></div>
+                            </div>
+                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                        </div>
+                        <div class="art-info">
+                            <h4>Morning Mist</h4>
+                            <p class="art-meta">12" x 12" | Oil</p>
+                            <p class="price">$180.00</p>
+                            <div class="expanded-content">
+                                <p class="art-description">A soft, atmospheric landscape capturing dawn rolling over quiet valley hills.</p>
+                                <button class="inquire-btn">Inquire About Piece</button>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </section>
-
-        <!-- Section 2: Process Videos -->
+		<!-- Section 2: Process Videos -->
         <section id="process" class="content-section grey-bg">
             <h3 class="section-title">Behind the Scenes</h3>
             <div class="video-container">
@@ -147,36 +226,45 @@
         <p>&copy; 2026 My Art Studio. Crafted with care.</p>
     </footer>
 
-    <!-- INTERACTION LOGIC ENGINE -->
     <script>
         function toggleCard(cardElement) {
-            const track = document.getElementById('artTrack');
-            const isOpen = cardElement.classList.contains('expanded');
+            var track = document.getElementById('artTrack');
+            var isOpen = cardElement.classList.contains('expanded');
             
-            if (event.target.closest('.nav-arrow') || event.target.closest('.art-image')) return;
+            if (event.target.closest('.nav-arrow')) return;
+            if (event.target.closest('.art-image')) return;
+            if (event.target.closest('.modal')) return;
 
-            document.querySelectorAll('.art-card').forEach(card => card.classList.remove('expanded'));
+            var allCards = document.querySelectorAll('.art-card');
+            for (var i = 0; i < allCards.length; i++) {
+                allCards[i].classList.remove('expanded');
+            }
             track.classList.remove('animation-paused');
 
             if (!isOpen) {
                 cardElement.classList.add('expanded');
-                track.classList.add('animation-paused');
+                track.add('animation-paused');
             }
         }
 
         document.addEventListener('click', function(event) {
-            const track = document.getElementById('artTrack');
+            var track = document.getElementById('artTrack');
             if (!event.target.closest('.art-card') && !event.target.closest('.modal')) {
-                document.querySelectorAll('.art-card').forEach(card => card.classList.remove('expanded'));
-                if (track) track.classList.remove('animation-paused');
+                var allCards = document.querySelectorAll('.art-card');
+                for (var i = 0; i < allCards.length; i++) {
+                    allCards[i].classList.remove('expanded');
+                }
+                if (track) {
+                    track.classList.remove('animation-paused');
+                }
             }
         });
 
         function changeSlide(event, button, direction) {
             event.stopPropagation();
-            const sliderTrack = button.parentElement.querySelector('.slider-track');
-            const slides = sliderTrack.querySelectorAll('.art-image');
-            let currentIndex = parseInt(sliderTrack.getAttribute('data-current-index'));
+            var sliderTrack = button.parentElement.querySelector('.slider-track');
+            var slides = sliderTrack.querySelectorAll('.art-image');
+            var currentIndex = parseInt(sliderTrack.getAttribute('data-current-index')) || 0;
 
             slides[currentIndex].classList.remove('active');
             currentIndex = (currentIndex + direction + slides.length) % slides.length;
@@ -186,24 +274,29 @@
 
         function zoomImage(divElement, event) {
             event.stopPropagation();
-            const lightbox = document.getElementById('lightbox');
-Use code with caution.
-const lightboxImg = document.getElementById('lightboxImg');
-lightbox.style.display = "flex";
-lightboxImg.style.backgroundColor = divElement.style.backgroundColor;
-document.getElementById('artTrack').classList.add('animation-paused');
-}
-function closeLightbox() {
-document.getElementById('lightbox').style.display = "none";
-}
-function openInquiryModal(artworkName, event) {
-event.stopPropagation();
-const modal = document.getElementById('inquiryModal');
-document.getElementById('inquiryTitle').innerText = Inquire: ${artworkName};
-document.getElementById('formArtworkName').value = artworkName;
-modal.style.display = "flex";
-document.getElementById('artTrack').classList.add('animation-paused');
-}
-function closeInquiryModal() {
-document.getElementById('inquiryModal').style.display = "none";
-}
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightboxImg');
+            lightbox.style.display = "flex";
+            lightboxImg.style.backgroundColor = divElement.style.backgroundColor;
+            document.getElementById('artTrack').classList.add('animation-paused');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = "none";
+        }
+
+        function openInquiryModal(artworkName, event) {
+            event.stopPropagation();
+            var modal = document.getElementById('inquiryModal');
+            document.getElementById('inquiryTitle').innerText = "Inquire: " + artworkName;
+            document.getElementById('formArtworkName').value = artworkName;
+            modal.style.display = "flex";
+            document.getElementById('artTrack').classList.add('animation-paused');
+        }
+
+        function closeInquiryModal() {
+            document.getElementById('inquiryModal').style.display = "none";
+        }
+    </script>
+</body>
+</html>
