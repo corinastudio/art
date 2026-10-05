@@ -10,7 +10,7 @@
 
     <!-- Navigation Bar -->
     <header>
-        <div class="logo">Corina's Art Studio</div>
+        <div class="logo">My Art Studio</div>
         <nav>
             <ul>
                 <li><a href="#gallery">Art Gallery</a></li>
@@ -27,7 +27,7 @@
     </section>
 
     <main>
-       <!-- Section 1: Art Gallery with Click-to-Expand Descriptions -->
+        <!-- Section 1: Art Gallery with Click-to-Expand Descriptions -->
         <section id="gallery" class="content-section">
             <h3 class="section-title">Available Artworks</h3>
             
@@ -36,7 +36,7 @@
                     
                     <!-- Art Item 1 -->
                     <div class="art-card" onclick="toggleCard(this)">
-                        <img src="art1.jpg" alt="Ocean Breeze Painting" class="art-image">
+                        <div class="art-image"></div>
                         <div class="art-info">
                             <h4>Ocean Breeze</h4>
                             <p class="art-meta">16" x 20" | Acrylic</p>
@@ -50,7 +50,7 @@
 
                     <!-- Art Item 2 -->
                     <div class="art-card" onclick="toggleCard(this)">
-                        <img src="art2.jpg" alt="Morning Mist Painting" class="art-image">
+                        <div class="art-image"></div>
                         <div class="art-info">
                             <h4>Morning Mist</h4>
                             <p class="art-meta">12" x 12" | Oil</p>
@@ -64,7 +64,7 @@
 
                     <!-- Art Item 3 -->
                     <div class="art-card" onclick="toggleCard(this)">
-                        <img src="art3.jpg" alt="Golden Hour Painting" class="art-image">
+                        <div class="art-image"></div>
                         <div class="art-info">
                             <h4>Golden Hour</h4>
                             <p class="art-meta">24" x 36" | Mixed Media</p>
@@ -78,7 +78,7 @@
 
                     <!-- Art Item 4 -->
                     <div class="art-card" onclick="toggleCard(this)">
-                        <img src="art4.jpg" alt="Forest Path Painting" class="art-image">
+                        <div class="art-image"></div>
                         <div class="art-info">
                             <h4>Forest Path</h4>
                             <p class="art-meta">11" x 14" | Gouache</p>
@@ -92,7 +92,7 @@
 
                     <!-- Art Item 5 -->
                     <div class="art-card" onclick="toggleCard(this)">
-                        <img src="art3.jpg" alt="Midnight Reflection Painting" class="art-image">
+                        <div class="art-image"></div>
                         <div class="art-info">
                             <h4>Midnight Reflection</h4>
                             <p class="art-meta">20" x 20" | Acrylic</p>
@@ -106,7 +106,7 @@
 
                     <!-- DUPLICATES FOR SEAMLESS LOOPING -->
                     <div class="art-card" onclick="toggleCard(this)" aria-hidden="true">
-                        <img src="art1.jpg" alt="" class="art-image">
+                        <div class="art-image"></div>
                         <div class="art-info">
                             <h4>Ocean Breeze</h4>
                             <p class="art-meta">16" x 20" | Acrylic</p>
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     <div class="art-card" onclick="toggleCard(this)" aria-hidden="true">
-                        <img src="art2.jpg" alt="" class="art-image">
+                        <div class="art-image"></div>
                         <div class="art-info">
                             <h4>Morning Mist</h4>
                             <p class="art-meta">12" x 12" | Oil</p>
@@ -161,22 +161,20 @@
     <script>
         function toggleCard(cardElement) {
             const track = document.getElementById('artTrack');
-            
-            // Check if this specific card is already open
             const isOpen = cardElement.classList.contains('expanded');
             
-            // Close any other open cards first
+            // Close any open cards
             document.querySelectorAll('.art-card').forEach(card => {
                 card.classList.remove('expanded');
             });
             track.classList.remove('animation-paused');
 
-            // If it wasn't open, open it and pause the line rotation
+            // Open clicked card
             if (!isOpen) {
                 cardElement.classList.add('expanded');
-                track.classList.add('animation-paused'); // Locks the carousel track steady
+                track.classList.add('animation-paused');
             }
         }
-    </script> 
+    </script>
 </body>
 </html>
