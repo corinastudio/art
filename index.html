@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,7 +28,7 @@
     </section>
 
     <main>
-        <!-- Section 1: Art Gallery with Click-to-Expand Descriptions -->
+        <!-- Section 1: Art Gallery with Fixed Bubble Layouts -->
         <section id="gallery" class="content-section">
             <h3 class="section-title">Available Artworks</h3>
             
@@ -36,96 +37,64 @@
                     
                     <!-- Art Item 1 -->
                     <div class="art-card" onclick="toggleCard(this)">
-                        <div class="art-image"></div>
+                        <div class="slider-container">
+                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                            <div class="slider-track" data-current-index="0">
+                                <div class="art-image active" style="background-color: #a0c4ff;" onclick="zoomImage(this, event)"></div>
+                                <div class="art-image" style="background-color: #bdb2ff;" onclick="zoomImage(this, event)"></div>
+                                <div class="art-image" style="background-color: #ffc6ff;" onclick="zoomImage(this, event)"></div>
+                            </div>
+                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                        </div>
                         <div class="art-info">
                             <h4>Ocean Breeze</h4>
                             <p class="art-meta">16" x 20" | Acrylic</p>
                             <p class="price">$250.00</p>
                             <div class="expanded-content">
-                                <p class="art-description">An immersive abstract study of coastal wind currents. Painted using layered heavy-body acrylics with a textured palette knife finish on heavy gallery-wrapped canvas.</p>
-                                <a href="mailto:your-email@://example.com: Ocean Breeze" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
+                                <p class="art-description">An immersive abstract study of coastal wind currents. Painted using layered heavy-body acrylics with a textured palette knife finish.</p>
+                                <button class="inquire-btn" onclick="openInquiryModal('Ocean Breeze', event)">Inquire About Piece</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Art Item 2 -->
                     <div class="art-card" onclick="toggleCard(this)">
-                        <div class="art-image"></div>
+                        <div class="slider-container">
+                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                            <div class="slider-track" data-current-index="0">
+                                <div class="art-image active" style="background-color: #ffadad;" onclick="zoomImage(this, event)"></div>
+                                <div class="art-image" style="background-color: #ffd166;" onclick="zoomImage(this, event)"></div>
+                            </div>
+                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                        </div>
                         <div class="art-info">
                             <h4>Morning Mist</h4>
                             <p class="art-meta">12" x 12" | Oil</p>
                             <p class="price">$180.00</p>
                             <div class="expanded-content">
-                                <p class="art-description">A soft, atmospheric landscape capturing dawn rolling over quiet valley hills. Created with delicate oil glazes over a primed wood panel board.</p>
-                                <a href="mailto:your-email@://example.com: Morning Mist" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
+                                <p class="art-description">A soft, atmospheric landscape capturing dawn rolling over quiet valley hills. Created with delicate oil glazes over a wood board.</p>
+                                <button class="inquire-btn" onclick="openInquiryModal('Morning Mist', event)">Inquire About Piece</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Art Item 3 -->
                     <div class="art-card" onclick="toggleCard(this)">
-                        <div class="art-image"></div>
+                        <div class="slider-container">
+                            <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">&#10094;</button>
+                            <div class="slider-track" data-current-index="0">
+                                <div class="art-image active" style="background-color: #caffbf;" onclick="zoomImage(this, event)"></div>
+                                <div class="art-image" style="background-color: #9bf6ff;" onclick="zoomImage(this, event)"></div>
+                            </div>
+                            <button class="nav-arrow next" onclick="changeSlide(event, this, 1)">&#10095;</button>
+                        </div>
                         <div class="art-info">
                             <h4>Golden Hour</h4>
                             <p class="art-meta">24" x 36" | Mixed Media</p>
                             <p class="price">$450.00</p>
                             <div class="expanded-content">
-                                <p class="art-description">A large-scale statement piece exploring structural light refraction. Embellished with genuine composition gold leaf flakes and plaster modeling paste textures.</p>
-                                <a href="mailto:your-email@://example.com: Golden Hour" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Art Item 4 -->
-                    <div class="art-card" onclick="toggleCard(this)">
-                        <div class="art-image"></div>
-                        <div class="art-info">
-                            <h4>Forest Path</h4>
-                            <p class="art-meta">11" x 14" | Gouache</p>
-                            <p class="price">$150.00</p>
-                            <div class="expanded-content">
-                                <p class="art-description">A vibrant, intimate botanical painting detailing woodland shadows. Rendered in premium matte designers gouache on 100% cotton archival paper.</p>
-                                <a href="mailto:your-email@://example.com: Forest Path" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Art Item 5 -->
-                    <div class="art-card" onclick="toggleCard(this)">
-                        <div class="art-image"></div>
-                        <div class="art-info">
-                            <h4>Midnight Reflection</h4>
-                            <p class="art-meta">20" x 20" | Acrylic</p>
-                            <p class="price">$320.00</p>
-                            <div class="expanded-content">
-                                <p class="art-description">A moody, minimalist study of cool light playing on dark moving water. Hand-varnished for a protective satin deep-sheen luster.</p>
-                                <a href="mailto:your-email@://example.com: Midnight Reflection" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DUPLICATES FOR SEAMLESS LOOPING -->
-                    <div class="art-card" onclick="toggleCard(this)" aria-hidden="true">
-                        <div class="art-image"></div>
-                        <div class="art-info">
-                            <h4>Ocean Breeze</h4>
-                            <p class="art-meta">16" x 20" | Acrylic</p>
-                            <p class="price">$250.00</p>
-                            <div class="expanded-content">
-                                <p class="art-description">An immersive abstract study of coastal wind currents. Painted using layered heavy-body acrylics with a textured palette knife finish on heavy gallery-wrapped canvas.</p>
-                                <a href="mailto:your-email@://example.com: Ocean Breeze" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="art-card" onclick="toggleCard(this)" aria-hidden="true">
-                        <div class="art-image"></div>
-                        <div class="art-info">
-                            <h4>Morning Mist</h4>
-                            <p class="art-meta">12" x 12" | Oil</p>
-                            <p class="price">$180.00</p>
-                            <div class="expanded-content">
-                                <p class="art-description">A soft, atmospheric landscape capturing dawn rolling over quiet valley hills. Created with delicate oil glazes over a primed wood panel board.</p>
-                                <a href="mailto:your-email@://example.com: Morning Mist" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
+                                <p class="art-description">A large-scale statement piece exploring structural light refraction. Embellished with genuine composition gold leaf flakes.</p>
+                                <button class="inquire-btn" onclick="openInquiryModal('Golden Hour', event)">Inquire About Piece</button>
                             </div>
                         </div>
                     </div>
@@ -137,7 +106,6 @@
         <!-- Section 2: Process Videos -->
         <section id="process" class="content-section grey-bg">
             <h3 class="section-title">Behind the Scenes</h3>
-            <p style="text-align: center; margin-bottom: 2rem;">Watch how these pieces come to life, from raw sketch to finished artwork.</p>
             <div class="video-container">
                 <iframe src="https://youtube.com" title="Art Process Video" allowfullscreen></iframe>
             </div>
@@ -148,48 +116,94 @@
             <h3 class="section-title">Textile Collection</h3>
             <div class="preview-box">
                 <h4>Coming Late 2026</h4>
-                <p>I am currently at the loom designing a brand new collection of hand-woven tufted goods, throws, and wearable art. Sign up for updates or check back soon!</p>
+                <p>I am currently at the loom designing a brand new collection of hand-woven tufted goods, throws, and wearable art.</p>
             </div>
         </section>
     </main>
+
+    <!-- FULL SCREEN LIGHTBOX MODAL FOR IMAGES -->
+    <div id="lightbox" class="modal" onclick="closeLightbox()">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content" id="lightboxImg"></div>
+    </div>
+
+    <!-- INQUIRY EMAIL MODAL POPUP -->
+    <div id="inquiryModal" class="modal">
+        <div class="modal-card">
+            <span class="close-modal" onclick="closeInquiryModal()">&times;</span>
+            <h4 id="inquiryTitle">Inquire About Artwork</h4>
+            <p class="modal-email-note">For purchasing inquiries or framing options, please send a message directly to: <br><strong>studio@yourdomain.com</strong></p>
+            <form action="https://formspree.io" method="POST" id="contactForm" onclick="event.stopPropagation();">
+                <input type="hidden" name="Artwork" id="formArtworkName">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <textarea name="message" rows="4" placeholder="Your message..." required></textarea>
+                <button type="submit" class="inquire-btn">Send Inquiry</button>
+            </form>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2026 My Art Studio. Crafted with care.</p>
     </footer>
 
-    <!-- Interactive script to elongate cards, freeze motion, and close when clicking away -->
+    <!-- INTERACTION LOGIC ENGINE -->
     <script>
         function toggleCard(cardElement) {
             const track = document.getElementById('artTrack');
             const isOpen = cardElement.classList.contains('expanded');
             
-            // Close any open cards first
-            document.querySelectorAll('.art-card').forEach(card => {
-                card.classList.remove('expanded');
-            });
+            if (event.target.closest('.nav-arrow') || event.target.closest('.art-image')) return;
+
+            document.querySelectorAll('.art-card').forEach(card => card.classList.remove('expanded'));
             track.classList.remove('animation-paused');
 
-            // Open clicked card if it wasn't already open
             if (!isOpen) {
                 cardElement.classList.add('expanded');
                 track.classList.add('animation-paused');
             }
         }
 
-        // Global click listener to detect clicking outside the art cards
         document.addEventListener('click', function(event) {
             const track = document.getElementById('artTrack');
-            
-            // If the user clicked something that is NOT an art card, close any open cards
-            if (!event.target.closest('.art-card')) {
-                document.querySelectorAll('.art-card').forEach(card => {
-                    card.classList.remove('expanded');
-                });
-                if (track) {
-                    track.classList.remove('animation-paused');
-                }
+            if (!event.target.closest('.art-card') && !event.target.closest('.modal')) {
+                document.querySelectorAll('.art-card').forEach(card => card.classList.remove('expanded'));
+                if (track) track.classList.remove('animation-paused');
             }
         });
-    </script>
-</body>
-</html>
+
+        function changeSlide(event, button, direction) {
+            event.stopPropagation();
+            const sliderTrack = button.parentElement.querySelector('.slider-track');
+            const slides = sliderTrack.querySelectorAll('.art-image');
+            let currentIndex = parseInt(sliderTrack.getAttribute('data-current-index'));
+
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + direction + slides.length) % slides.length;
+            slides[currentIndex].classList.add('active');
+            sliderTrack.setAttribute('data-current-index', currentIndex);
+        }
+
+        function zoomImage(divElement, event) {
+            event.stopPropagation();
+            const lightbox = document.getElementById('lightbox');
+Use code with caution.
+const lightboxImg = document.getElementById('lightboxImg');
+lightbox.style.display = "flex";
+lightboxImg.style.backgroundColor = divElement.style.backgroundColor;
+document.getElementById('artTrack').classList.add('animation-paused');
+}
+function closeLightbox() {
+document.getElementById('lightbox').style.display = "none";
+}
+function openInquiryModal(artworkName, event) {
+event.stopPropagation();
+const modal = document.getElementById('inquiryModal');
+document.getElementById('inquiryTitle').innerText = Inquire: ${artworkName};
+document.getElementById('formArtworkName').value = artworkName;
+modal.style.display = "flex";
+document.getElementById('artTrack').classList.add('animation-paused');
+}
+function closeInquiryModal() {
+document.getElementById('inquiryModal').style.display = "none";
+}
