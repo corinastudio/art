@@ -8,10 +8,10 @@
 
 /* Custom Soft Blue Color Scheme */
 :root {
-    --bg-soft-blue: #f0f4f8;      /* Very soft mist blue for overall background */
-    --accent-blue: #cbdbe5;       /* Slightly deeper soft blue for placeholders */
-    --text-dark: #2d3748;         /* Deep slate for clean contrast reading */
-    --text-muted: #718096;        /* Muted grey for subtext */
+    --bg-soft-blue: #f0f4f8;      
+    --accent-blue: #cbdbe5;       
+    --text-dark: #2d3748;         
+    --text-muted: #718096;        
 }
 
 body {
@@ -79,10 +79,11 @@ nav ul li a:hover {
 /* Content Sections Layout */
 .content-section {
     padding: 5rem 5%;
+    overflow: hidden; /* Prevents whole website from scrolling sideways */
 }
 
 .grey-bg {
-    background-color: #eaf0f6; /* Contrasting slightly deeper soft blue */
+    background-color: #eaf0f6; 
     border-radius: 12px;
     margin: 0 5%;
 }
@@ -93,54 +94,56 @@ nav ul li a:hover {
     margin-bottom: 3rem;
 }
 
-/* --- INFINITE SCROLLING ART GALLERY --- */
+/* --- THE TRACK ENGINE FIX --- */
 
-/* The outer window frame that hides overflowing cards */
 .marquee-container {
     width: 100%;
     overflow: hidden;
     padding: 2rem 0;
-    position: relative;
 }
 
-/* The long train holding the art cards in a single row */
+/* Forces items to stay side-by-side in a line, no matter what */
 .marquee-track {
-    display: flex;
-    gap: 2.5rem;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 30px;
     width: max-content;
-    animation: scrollArt 25s linear infinite;
+    animation: scrollArt 30s linear infinite;
 }
 
-/* Gently pauses the movement when someone hovers their mouse over a card */
+/* Pauses movement when you hover over a card */
 .marquee-track:hover {
     animation-play-state: paused;
 }
 
-/* Individual Art Cards (Sized to fit roughly 2 at a time beautifully) */
+/* Hardcoded card dimensions so it NEVER stacks vertically */
 .art-card {
     background: #ffffff;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    width: 42vw; 
-    max-width: 480px; 
-    flex-shrink: 0;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    width: 380px; /* Fixed structural width */
+    flex-shrink: 0; /* Prevents browser from squeezing the cards flat */
     transition: transform 0.3s ease;
 }
 
 .art-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
 }
 
+/* Hardcoded image placeholder box */
 .art-image {
     width: 100%;
-    height: 350px;
-    object-fit: cover; /* Crops images nicely without stretching them */
-    background-color: var(--accent-blue); 
+    height: 300px; /* Fixed height block */
+    display: block;
+    object-fit: cover; 
+    background-color: var(--accent-blue); /* Solid soft-blue box displays if image fails */
 }
 
 .art-info {
     padding: 1.5rem;
+    background: #ffffff;
 }
 
 .art-info h4 {
@@ -160,14 +163,14 @@ nav ul li a:hover {
     color: var(--text-dark);
 }
 
-/* Scrolling math engine for desktop and tablets */
+/* Continuous Animation Loop Math */
 @keyframes scrollArt {
     0% {
         transform: translateX(0);
     }
     100% {
-        /* Loops after passing the width of the 5 original cards + gaps */
-        transform: translateX(calc(-5 * (480px + 2.5rem)));
+        /* Moves left precisely by 5 cards (380px each) + 5 gaps (30px each) */
+        transform: translateX(calc(-5 * (380px + 30px)));
     }
 }
 
@@ -176,7 +179,7 @@ nav ul li a:hover {
     max-width: 800px;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 56.25%; /* Fixed 16:9 Aspect Ratio */
+    padding-bottom: 56.25%; 
     height: 0;
     border-radius: 8px;
     overflow: hidden;
@@ -214,15 +217,4 @@ footer {
     padding: 3rem;
     color: var(--text-muted);
     font-size: 0.9rem;
-}
-
-/* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 600px) {
-    .art-card {
-        width: 75vw; /* Scales cards up on mobile screens so they look legible */
-    }
-    @keyframes scrollArt {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-5 * (75vw + 2.5rem))); }
-    }
 }
