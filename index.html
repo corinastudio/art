@@ -27,78 +27,106 @@
     </section>
 
     <main>
-         <!-- Section 1: Art Gallery (5 Pieces moving in a line) -->
+       <!-- Section 1: Art Gallery with Click-to-Expand Descriptions -->
         <section id="gallery" class="content-section">
             <h3 class="section-title">Available Artworks</h3>
             
             <div class="marquee-container">
-                <div class="marquee-track">
+                <div class="marquee-track" id="artTrack">
                     
                     <!-- Art Item 1 -->
-                    <div class="art-card">
+                    <div class="art-card" onclick="toggleCard(this)">
                         <img src="art1.jpg" alt="Ocean Breeze Painting" class="art-image">
                         <div class="art-info">
                             <h4>Ocean Breeze</h4>
                             <p class="art-meta">16" x 20" | Acrylic</p>
                             <p class="price">$250.00</p>
+                            <div class="expanded-content">
+                                <p class="art-description">An immersive abstract study of coastal wind currents. Painted using layered heavy-body acrylics with a textured palette knife finish on heavy gallery-wrapped canvas.</p>
+                                <a href="mailto:your-email@://example.com: Ocean Breeze" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Art Item 2 -->
-                    <div class="art-card">
+                    <div class="art-card" onclick="toggleCard(this)">
                         <img src="art2.jpg" alt="Morning Mist Painting" class="art-image">
                         <div class="art-info">
                             <h4>Morning Mist</h4>
                             <p class="art-meta">12" x 12" | Oil</p>
                             <p class="price">$180.00</p>
+                            <div class="expanded-content">
+                                <p class="art-description">A soft, atmospheric landscape capturing dawn rolling over quiet valley hills. Created with delicate oil glazes over a primed wood panel board.</p>
+                                <a href="mailto:your-email@://example.com: Morning Mist" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Art Item 3 -->
-                    <div class="art-card">
+                    <div class="art-card" onclick="toggleCard(this)">
                         <img src="art3.jpg" alt="Golden Hour Painting" class="art-image">
                         <div class="art-info">
                             <h4>Golden Hour</h4>
                             <p class="art-meta">24" x 36" | Mixed Media</p>
                             <p class="price">$450.00</p>
+                            <div class="expanded-content">
+                                <p class="art-description">A large-scale statement piece exploring structural light refraction. Embellished with genuine composition gold leaf flakes and plaster modeling paste textures.</p>
+                                <a href="mailto:your-email@://example.com: Golden Hour" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Art Item 4 -->
-                    <div class="art-card">
+                    <div class="art-card" onclick="toggleCard(this)">
                         <img src="art4.jpg" alt="Forest Path Painting" class="art-image">
                         <div class="art-info">
                             <h4>Forest Path</h4>
                             <p class="art-meta">11" x 14" | Gouache</p>
                             <p class="price">$150.00</p>
+                            <div class="expanded-content">
+                                <p class="art-description">A vibrant, intimate botanical painting detailing woodland shadows. Rendered in premium matte designers gouache on 100% cotton archival paper.</p>
+                                <a href="mailto:your-email@://example.com: Forest Path" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Art Item 5 -->
-                    <div class="art-card">
+                    <div class="art-card" onclick="toggleCard(this)">
                         <img src="art3.jpg" alt="Midnight Reflection Painting" class="art-image">
                         <div class="art-info">
                             <h4>Midnight Reflection</h4>
                             <p class="art-meta">20" x 20" | Acrylic</p>
                             <p class="price">$320.00</p>
+                            <div class="expanded-content">
+                                <p class="art-description">A moody, minimalist study of cool light playing on dark moving water. Hand-varnished for a protective satin deep-sheen luster.</p>
+                                <a href="mailto:your-email@://example.com: Midnight Reflection" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- DUPLICATES: We copy items 1 & 2 here so the loop looks completely seamless when it resets -->
-                    <div class="art-card" aria-hidden="true">
+                    <!-- DUPLICATES FOR SEAMLESS LOOPING -->
+                    <div class="art-card" onclick="toggleCard(this)" aria-hidden="true">
                         <img src="art1.jpg" alt="" class="art-image">
                         <div class="art-info">
                             <h4>Ocean Breeze</h4>
                             <p class="art-meta">16" x 20" | Acrylic</p>
                             <p class="price">$250.00</p>
+                            <div class="expanded-content">
+                                <p class="art-description">An immersive abstract study of coastal wind currents. Painted using layered heavy-body acrylics with a textured palette knife finish on heavy gallery-wrapped canvas.</p>
+                                <a href="mailto:your-email@://example.com: Ocean Breeze" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="art-card" aria-hidden="true">
+                    <div class="art-card" onclick="toggleCard(this)" aria-hidden="true">
                         <img src="art2.jpg" alt="" class="art-image">
                         <div class="art-info">
                             <h4>Morning Mist</h4>
                             <p class="art-meta">12" x 12" | Oil</p>
                             <p class="price">$180.00</p>
+                            <div class="expanded-content">
+                                <p class="art-description">A soft, atmospheric landscape capturing dawn rolling over quiet valley hills. Created with delicate oil glazes over a primed wood panel board.</p>
+                                <a href="mailto:your-email@://example.com: Morning Mist" class="inquire-btn" onclick="event.stopPropagation();">Inquire About Piece</a>
+                            </div>
                         </div>
                     </div>
 
@@ -111,7 +139,6 @@
             <h3 class="section-title">Behind the Scenes</h3>
             <p style="text-align: center; margin-bottom: 2rem;">Watch how these pieces come to life, from raw sketch to finished artwork.</p>
             <div class="video-container">
-                <!-- Swap the src URL with your actual YouTube embed link later -->
                 <iframe src="https://youtube.com" title="Art Process Video" allowfullscreen></iframe>
             </div>
         </section>
@@ -130,6 +157,26 @@
         <p>&copy; 2026 My Art Studio. Crafted with care.</p>
     </footer>
 
+    <!-- Interactive script to elongate cards and freeze motion dynamically on click -->
+    <script>
+        function toggleCard(cardElement) {
+            const track = document.getElementById('artTrack');
+            
+            // Check if this specific card is already open
+            const isOpen = cardElement.classList.contains('expanded');
+            
+            // Close any other open cards first
+            document.querySelectorAll('.art-card').forEach(card => {
+                card.classList.remove('expanded');
+            });
+            track.classList.remove('animation-paused');
 
+            // If it wasn't open, open it and pause the line rotation
+            if (!isOpen) {
+                cardElement.classList.add('expanded');
+                track.classList.add('animation-paused'); // Locks the carousel track steady
+            }
+        }
+    </script> 
 </body>
 </html>
