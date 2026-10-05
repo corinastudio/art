@@ -286,64 +286,6 @@ footer { text-align: center; padding: 3rem; color: var(--text-muted); font-size:
     text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6), 0px 1px 1px rgba(0, 0, 0, 0.15);
 }
 
-/* ==========================================================================
-   FULL-SCREEN BACKGROUND VIDEO LAYER OVERRIDES
-   ========================================================================== */
-.instagram-bg-wrapper {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    z-index: 9999; /* Stacks correctly for security triggers */
-    overflow: hidden;
-    pointer-events: none; /* Mouse clicks pass directly to your art cards below */
-    mix-blend-mode: multiply; /* Blends nicely with the light blue base */
-    opacity: 0.28; /* Keeps background video beautifully subtle */
-}
-
-.instagram-bg-frame {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 140vw; height: 140vh;
-}
-
-.instagram-bg-frame iframe {
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100vh !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* ==========================================================================
-   STANDALONE INSTAGRAM GRID SECTION
-   ========================================================================== */
-.instagram-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    padding: 0 5%;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.instagram-video-box {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    width: 320px;
-    height: 480px;
-    overflow-y: auto;
-}
-
-.insta-placeholder-content {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background-color: var(--accent-blue);
-    color: var(--text-dark);
-    font-weight: 600;
-}
 
 /* ==========================================================================
    MOBILE & TABLET RESPONSIVENESS MODULE
