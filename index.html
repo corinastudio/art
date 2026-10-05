@@ -27,11 +27,11 @@
     </section>
 
     <main>
-        <!-- Section 1: Art Gallery with 5 Draggable, Expandable Cards -->
+        <!-- Section 1: Art Gallery with 5 Click-to-Expand Cards -->
         <section id="gallery" class="content-section">
             <h3 class="section-title">Available Artworks</h3>
             
-            <div class="marquee-container" id="marqueeContainer">
+            <div class="marquee-container">
                 <div class="marquee-track" id="artTrack">
                     
                     <!-- Art Item 1 -->
@@ -96,7 +96,8 @@
                             </div>
                         </div>
                     </div>
-					 <!-- Art Item 4 -->
+
+                    <!-- Art Item 4 -->
                     <div class="art-card" onclick="toggleCard(this)">
                         <div class="slider-container">
                             <button class="nav-arrow prev" onclick="changeSlide(event, this, -1)">❮</button>
@@ -164,12 +165,10 @@
             </div>
         </section>
 
-        <!-- New Live Section 2: Prints Gallery (Replaced textiles completely) -->
         <section id="prints" class="content-section">
             <h3 class="section-title">Fine Art Prints</h3>
             <div class="prints-grid">
                 
-                <!-- Print 1 -->
                 <div class="art-card">
                     <div class="slider-container">
                         <div class="art-image active" style="background-color: #e2e8f0;"></div>
@@ -182,7 +181,6 @@
                     </div>
                 </div>
 
-                <!-- Print 2 -->
                 <div class="art-card">
                     <div class="slider-container">
                         <div class="art-image active" style="background-color: #e2e8f0;"></div>
@@ -195,7 +193,6 @@
                     </div>
                 </div>
 
-                <!-- Print 3 -->
                 <div class="art-card">
                     <div class="slider-container">
                         <div class="art-image active" style="background-color: #e2e8f0;"></div>
@@ -210,28 +207,26 @@
 
             </div>
         </section>
-		  <!-- Section 3: Behind the Scenes (Moved cleanly to the bottom) -->
+
         <section id="process" class="content-section grey-bg">
             <h3 class="section-title">Behind the Scenes</h3>
             <div class="video-container">
-                <iframe src="https://youtube.com" title="Art Process Video" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Art Process Video" allowfullscreen></iframe>
             </div>
         </section>
     </main>
 
-    <!-- FULL SCREEN LIGHTBOX MODAL FOR IMAGES -->
     <div id="lightbox" class="modal" onclick="closeLightbox()">
         <span class="close-modal">&times;</span>
         <div class="modal-content" id="lightboxImg"></div>
     </div>
 
-    <!-- INQUIRY EMAIL MODAL POPUP -->
     <div id="inquiryModal" class="modal">
         <div class="modal-card">
             <span class="close-modal" onclick="closeInquiryModal()">&times;</span>
             <h4 id="inquiryTitle">Inquire About Artwork</h4>
             <p class="modal-email-note">For purchasing inquiries or framing options, please send a message directly to: <br><strong>studio@yourdomain.com</strong></p>
-            <form action="https://formspree.io" method="POST" id="contactForm" onclick="event.stopPropagation();">
+            <form action="https://formspree.io/f/your-id" method="POST" id="contactForm" onclick="event.stopPropagation();">
                 <input type="hidden" name="Artwork" id="formArtworkName">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email Address" required>
@@ -245,15 +240,11 @@
         <p>&copy; 2026 My Art Studio. Crafted with care.</p>
     </footer>
 
-    <!-- INTERACTIVE CLICK, ZOOM, AND MOUSE DRAG ENGINE -->
     <script>
-        // --- CLICK TO EXPAND PANEL LOGIC ---
         function toggleCard(cardElement) {
             var track = document.getElementById('artTrack');
             var isOpen = cardElement.classList.contains('expanded');
             
-            // Safety flags to prevent breaking when sliding or clicking overlay buttons
-            if (isDraggingText) return; 
             if (event.target.closest('.nav-arrow')) return;
             if (event.target.closest('.art-image')) return;
             if (event.target.closest('.modal')) return;
@@ -270,7 +261,6 @@
             }
         }
 
-        // --- GLOBAL OUTSIDE-CLICK TO CLOSE TRACKS ---
         document.addEventListener('click', function(event) {
             var track = document.getElementById('artTrack');
             if (!event.target.closest('.art-card') && !event.target.closest('.modal')) {
@@ -284,7 +274,6 @@
             }
         });
 
-        // --- INTERNAL DECK FLICK SLIDER ARROWS ---
         function changeSlide(event, button, direction) {
             event.stopPropagation();
             var sliderTrack = button.parentElement.querySelector('.slider-track');
@@ -297,7 +286,6 @@
             sliderTrack.setAttribute('data-current-index', currentIndex);
         }
 
-        // --- IMAGE LIGHTBOX FULLSCREEN ZOOM OVERLAYS ---
         function zoomImage(divElement, event) {
             event.stopPropagation();
             var lightbox = document.getElementById('lightbox');
@@ -311,7 +299,6 @@
             document.getElementById('lightbox').style.display = "none";
         }
 
-        // --- CONTACT MODAL POPUP WINDOW INTERACTION ---
         function openInquiryModal(artworkName, event) {
             event.stopPropagation();
             var modal = document.getElementById('inquiryModal');
@@ -324,46 +311,6 @@
         function closeInquiryModal() {
             document.getElementById('inquiryModal').style.display = "none";
         }
-
-        // --- MOUSE CLICK-AND-DRAG TRACK CONTROLLER ---
-        var container = document.getElementById('marqueeContainer');
-        var track = document.getElementById('artTrack');
-        var isDown = false;
-        var startX;
-        var currentXTransform = 0;
-        var isDraggingText = false;
-
-        container.addEventListener('mousedown', function(e) {
-            isDown = true;
-            isDraggingText = false;
-            track.classList.add('dragging');
-            
-            // Read active CSS positioning coordinates matrix safely
-            var style = window.getComputedStyle(track);
-            var matrix = new WebKitCSSMatrix(style.transform);
-            currentXTransform = matrix.m41; 
-            
-            startX = e.pageX - currentXTransform;
-        });
-
-        container.addEventListener('mouseleave', function() {
-            if (!isDown) return;
-            isDown = false;
-            track.classList.remove('dragging');
-        });
-
-        container.addEventListener('mouseup', function() {
-            isDown = false;
-            track.classList.remove('dragging');
-        });
-
-        container.addEventListener('mousemove', function(e) {
-            if (!isDown) return;
-            e.preventDefault();
-            isDraggingText = true; // Flips safety flag to suppress single clicks when dragging layout
-            var x = e.pageX - startX;
-            track.style.transform = 'translateX(' + x + 'px)';
-        });
     </script>
 </body>
 </html>
