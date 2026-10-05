@@ -1,4 +1,3 @@
-```css
 /* Universal Reset & Fonts */
 * {
     margin: 0;
@@ -32,7 +31,7 @@ header {
     z-index: 100;
 }
 
-.logo { font-size: 1.4rem; font-weight: 700; }
+.logo { font-size: 1.4rem; font-weight: 700; text-align: center; }
 nav ul { display: flex; list-style: none; }
 nav ul li { margin-left: 2rem; }
 nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
@@ -45,19 +44,26 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 }
 
 .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-.content-section { padding: 5rem 5%; overflow: hidden; }
-.grey-bg { background-color: #bddefb; border-radius: 12px; margin: 0 5%; }
-.section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3rem; }
+.content-section { padding: 5rem 0; overflow: hidden; width: 100%; text-align: center; }
+.grey-bg { background-color: #bddefb; border-radius: 12px; margin: 0 5%; padding: 5rem 5%; }
+.section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3rem; width: 100%; }
 
-/* --- RUNNING TRACK --- */
-.marquee-container { width: 100%; overflow: hidden; padding: 2rem 0; }
+/* --- THE CENTERING CAROUSEL ENGINE --- */
+.marquee-container { 
+    width: 100%; 
+    overflow: hidden; 
+    padding: 2rem 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
 .marquee-track {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     gap: 30px;
     width: max-content;
-    animation: scrollArt 20s linear infinite;
+    animation: scrollArt 32s linear infinite;
 }
 .marquee-track:hover { animation-play-state: paused; }
 .marquee-track.animation-paused { animation-play-state: paused !important; }
@@ -71,9 +77,10 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     flex-shrink: 0;
     transition: transform 0.3s ease;
     cursor: pointer;
+    text-align: left;
 }
 
-/* --- THE IMAGE BUBBLE BOX --- */
+/* Slider Frame Box inside Card Bubble */
 .slider-container {
     position: relative;
     width: 100%;
@@ -101,15 +108,16 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 
 .slider-track .art-image.active {
     opacity: 1;
+    position: relative;
     z-index: 2;
 }
 
-/* Navigational Arrows */
+/* Navigation Overlay Arrows */
 .nav-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.8);
     color: var(--text-dark);
     border: none;
     width: 36px;
@@ -124,22 +132,20 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     justify-content: center;
     transition: background 0.2s;
 }
-
 .nav-arrow:hover { background: #ffffff; }
-.prev { left: 12px; z-index: 15; }
-.next { right: 12px; z-index: 15; }
+.prev { left: 12px; }
+.next { right: 12px; }
 
 .art-info { padding: 1.5rem; background: #ffffff; }
 .art-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; }
-.price { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; }
+.price { font-size: 1.1rem; font-weight: 600; }
 
-/* Fixed layout overflow calculations */
+/* Elongated Expansion Block calculations */
 .expanded-content {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
-    margin-top: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
 }
 
 .art-card.expanded .expanded-content {
@@ -150,7 +156,7 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     padding-top: 1rem;
 }
 
-.art-description { font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.5; color: var(--text-dark); }
+.art-description { font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.5; }
 
 .inquire-btn {
     display: inline-block;
@@ -167,7 +173,7 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 }
 .inquire-btn:hover { background-color: #b08d4b; }
 
-/* --- POPUP WINDOW MODALS --- */
+/* --- POPUP WINDOW OVERLAYS --- */
 .modal {
     display: none;
     position: fixed;
@@ -181,7 +187,7 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 .modal-content {
     width: 500px;
     height: 500px;
-    border-radius: 6px;
+    border-radius: 8px;
     box-shadow: 0 4px 30px rgba(0,0,0,0.3);
 }
 
@@ -193,6 +199,7 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     max-width: 480px;
     position: relative;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: left;
 }
 
 .close-modal {
@@ -201,7 +208,6 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     font-size: 2rem;
     cursor: pointer;
     color: var(--text-muted);
-    z-index: 210;
 }
 
 .modal-card h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #c5a059; margin-bottom: 0.5rem; }
@@ -216,9 +222,36 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     font-size: 0.95rem;
 }
 
+/* Video Layout box centering updates */
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+/* Future Textiles text box alignment updates */
+.preview-box {
+    background: #ffffff;
+    border: 2px dashed var(--text-muted);
+    border-radius: 8px;
+    padding: 3rem;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.preview-box h4 { margin-bottom: 1rem; color: var(--text-dark); }
+footer { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 0.9rem; }
+
+/* Timeline Loop Math updated to scroll past exactly 5 original cards + gaps */
 @keyframes scrollArt {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-3 * (380px + 30px))); } 
+    100% { transform: translateX(calc(-5 * (380px + 30px))); } 
 }
 
 /* --- SOPHISTICATED GOLD TYPOGRAPHY --- */
