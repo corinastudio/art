@@ -3,38 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Art Studio</title>
-    <!-- Link to external stylesheet -->
+    <title>Art & Textiles Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header Section -->
+    <!-- Navigation Bar -->
     <header>
-        <h1>Welcome to My Art</h1>
+        <div class="logo">My Art Studio</div>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#gallery">Art Gallery</a></li>
+                <li><a href="#process">Behind the Scenes</a></li>
+                <li><a href="#textiles" class="disabled-link">Textiles (Coming Soon)</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Main Content Section -->
+    <!-- Hero / Intro Section -->
+    <section class="hero">
+        <h2>Original Art & Textures</h2>
+        <p>Explore original paintings, process videos, and upcoming hand-woven textile collections.</p>
+    </section>
+
     <main>
-        <section id="home">
-            <h2>Art</h2>
-            <p>I am so excited for you to view my art</p>
+        <!-- Section 1: Art Gallery (3 Pieces with Prices) -->
+        <section id="gallery" class="content-section">
+            <h3 class="section-title">Available Artworks</h3>
+            <div class="art-grid">
+                
+                <!-- Art Item 1 -->
+                <div class="art-card">
+                    <img src="art1.jpg" alt="Ocean Breeze Painting" class="art-image">
+                    <div class="art-info">
+                        <h4>Ocean Breeze</h4>
+                        <p class="art-meta">16" x 20" | Acrylic on Canvas</p>
+                        <p class="price">$250.00</p>
+                    </div>
+                </div>
+
+                <!-- Art Item 2 -->
+                <div class="art-card">
+                    <img src="art2.jpg" alt="Morning Mist Painting" class="art-image">
+                    <div class="art-info">
+                        <h4>Morning Mist</h4>
+                        <p class="art-meta">12" x 12" | Oil on Wood Panel</p>
+                        <p class="price">$180.00</p>
+                    </div>
+                </div>
+
+                <!-- Art Item 3 -->
+                <div class="art-card">
+                    <img src="art3.jpg" alt="Golden Hour Painting" class="art-image">
+                    <div class="art-info">
+                        <h4>Golden Hour</h4>
+                        <p class="art-meta">24" x 36" | Mixed Media</p>
+                        <p class="price">$450.00</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 2: Process Videos -->
+        <section id="process" class="content-section grey-bg">
+            <h3 class="section-title">Behind the Scenes</h3>
+            <p style="text-align: center; margin-bottom: 2rem;">Watch how these pieces come to life, from raw sketch to finished artwork.</p>
+            <div class="video-container">
+                <!-- Swap the src URL with your actual YouTube embed link later -->
+                <iframe src="https://youtube.com" title="Art Process Video" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- Section 3: Future Textiles Preview -->
+        <section id="textiles" class="content-section">
+            <h3 class="section-title">Textile Collection</h3>
+            <div class="preview-box">
+                <h4>Coming Late 2026</h4>
+                <p>I am currently at the loom designing a brand new collection of hand-woven tufted goods, throws, and wearable art. Sign up for updates or check back soon!</p>
+            </div>
         </section>
     </main>
 
-    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2026 My Website. All rights reserved.</p>
+        <p>&copy; 2026 My Art Studio. Crafted with care.</p>
     </footer>
 
-    <!-- Optional JavaScript Link -->
-    <script src="script.js"></script>
 </body>
 </html>
