@@ -8,10 +8,10 @@
 
 /* Custom Soft Blue Color Scheme */
 :root {
-    --bg-soft-blue: #f0f4f8;      
-    --accent-blue: #cbdbe5;       
-    --text-dark: #2d3748;         
-    --text-muted: #718096;        
+    --bg-soft-blue: #d0e1fd;      
+    --accent-blue: #b3cffb;       
+    --text-dark: #1a2536;         
+    --text-muted: #53647c;        
 }
 
 body {
@@ -83,7 +83,7 @@ nav ul li a:hover {
 }
 
 .grey-bg {
-    background-color: #eaf0f6; 
+    background-color: #bddefb; 
     border-radius: 12px;
     margin: 0 5%;
 }
