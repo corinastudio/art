@@ -47,19 +47,13 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 .grey-bg { background-color: #bddefb; border-radius: 12px; margin: 0 5%; padding: 5rem 5%; }
 .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3rem; width: 100%; }
 
-/* --- DRAGGABLE AUTOMATED CAROUSEL ENGINE --- */
+/* --- THE AUTOMATED CAROUSEL ENGINE --- */
 .marquee-container { 
     width: 100%; 
     overflow: hidden; 
     padding: 2rem 0;
     display: flex;
     justify-content: flex-start;
-    cursor: grab;
-    user-select: none;
-}
-
-.marquee-container:active {
-    cursor: grabbing;
 }
 
 .marquee-track {
@@ -69,12 +63,10 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
     gap: 30px;
     width: max-content;
     animation: scrollArt 35s linear infinite;
-    will-change: transform;
 }
 
 .marquee-track:hover { animation-play-state: paused; }
 .marquee-track.animation-paused { animation-play-state: paused !important; }
-.marquee-track.dragging { animation: none !important; }
 
 .art-card {
     background: #ffffff;
@@ -147,7 +139,7 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 .art-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; }
 .price { font-size: 1.1rem; font-weight: 600; }
 
-/* Elongated Expansion Block */
+/* Elongated Expansion Block calculations */
 .expanded-content {
     max-height: 0;
     opacity: 0;
@@ -255,7 +247,7 @@ nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; 
 
 footer { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 0.9rem; }
 
-/* Timeline Loop Math updated to scroll past exactly 5 original cards + gaps */
+/* Timeline Loop Math handles 5 cards loops seamlessly */
 @keyframes scrollArt {
     0% { transform: translateX(0); }
     100% { transform: translateX(calc(-5 * (380px + 30px))); } 
